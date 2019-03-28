@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4A48FF17-43DE-473E-ACC4-09C058AA1762}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.API", "GETmerger.API\GETmerger.API.csproj", "{C9FC5093-04CE-42AA-9FBD-086C14865641}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD} = {2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F59FDFF6-8A8D-4D7F-A8B8-1BB6F70594B3}"
 EndProject

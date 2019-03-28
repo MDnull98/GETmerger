@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using GETmerger.BLL.Contracts.Models.Output;
 using GETmerger.Core.Models;
-
 
 namespace GETmerger.API.Controllers
 {
@@ -18,9 +12,9 @@ namespace GETmerger.API.Controllers
         // 3 GetMergeScript(string databaseName, string tableName)
 
         [Route("api/databases")]
-        public GenericResponse<DatabasesOutputModelcs> GetDatabases()
+        public GenericResponse<IEnumerable<DatabaseOutputModel>> GetDatabases()
         {
-            return new GenericResponse<DatabasesOutputModelcs>(new DatabasesOutputModelcs());
+            return new GenericResponse<IEnumerable<DatabaseOutputModel>>(null);
         }
 
         [Route("api/tables")]

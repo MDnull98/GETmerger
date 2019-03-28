@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Queries\SqlDbParameter.cs" />
+    <Compile Include="Models\GenericResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryRepositories\BaseQueryRepository.cs" />
   </ItemGroup>
