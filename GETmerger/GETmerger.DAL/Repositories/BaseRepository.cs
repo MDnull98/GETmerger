@@ -15,12 +15,6 @@ namespace GETmerger.DAL.Repositories
 {
     public class BaseRepository : IBaseRepository
     {
-        MergerContext db;
-
-        public BaseRepository(MergerContext context)
-        {
-            db = context;
-        }
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public List<BaseName> GetAll()
         {
@@ -30,24 +24,6 @@ namespace GETmerger.DAL.Repositories
                 bases = db1.Query<BaseName>("SELECT name from sys.databases").ToList();
             }
             return bases;
-        }
-        public void Create(BaseName item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BaseName Get(int? id)
-        {
-            throw new NotImplementedException();
-        }
-        public void Update(BaseName item)
-        {
-            throw new NotImplementedException();
         }
     }
 }

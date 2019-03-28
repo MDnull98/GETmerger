@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GETmerger.DAL.Contracts.Models;
+using  GETmerger.DAL.Contracts.Repositories;
 
-namespace GETmerger.DAL.Contracts.Interfaces
+namespace GETmerger.DAL.Contracts.QueryRepositories
 {
-    public interface IBaseRepository:IRepository<BaseName>
+    public interface ITableQueryRepository:IQueryRepository<TableName>
     {
 
     }

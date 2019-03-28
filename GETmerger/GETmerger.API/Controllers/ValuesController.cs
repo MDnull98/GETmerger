@@ -3,37 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using GETmerger.BLL.Contracts.Models.Output;
+using GETmerger.Core.Models;
+
 
 namespace GETmerger.API.Controllers
 {
-    public class ValuesController : ApiController
+    public class SQLServerInfoController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        // 1 GetDatabases()
+        // 2 GetTables(string databaseName)
+        // 3 GetMergeScript(string databaseName, string tableName)
+
+        [Route("api/databases")]
+        public GenericResponse<DatabasesOutputModelcs> GetDatabases()
         {
-            return new string[] { "value1", "value2" };
+            return new GenericResponse<DatabasesOutputModelcs>(new DatabasesOutputModelcs());
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [Route("api/tables")]
+        public GenericResponse<IEnumerable<string>> GetTables(string databaseName)
         {
-            return "value";
+            return new GenericResponse<IEnumerable<string>>(new[] { "databse1", "databse2" });
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        [Route("api/merge-script")]
+        public GenericResponse<string> GetMergeScript(string databaseName, string tableName)
         {
+            return new GenericResponse<string>("databse2");
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
     }
 }
