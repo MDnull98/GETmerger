@@ -42,24 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DTOs\BaseName.cs" />
+    <Compile Include="Models\DomainModels\HistoryEntity.cs" />
+    <Compile Include="QueryRepositories\IBaseRepository.cs" />
     <Compile Include="QueryRepositories\ITableRepository.cs" />
-    <Compile Include="Models\BaseName.cs" />
-    <Compile Include="Models\TableName.cs" />
+    <Compile Include="Models\DTOs\TableName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IHistoryRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\DomainModels\" />
-    <Folder Include="Models\DTOs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GETmerger.Core\GETmerger.Core.csproj">
-      <Project>{2c86d389-46fe-4451-a841-15cd699b423a}</Project>
-      <Name>GETmerger.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

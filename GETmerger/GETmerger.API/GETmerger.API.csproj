@@ -257,9 +257,9 @@
       <Project>{03cc44fb-83fd-4bac-9704-2c20ec9e3493}</Project>
       <Name>GETmerger.BLL.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GETmerger.Core\GETmerger.Core.csproj">
-      <Project>{2c86d389-46fe-4451-a841-15cd699b423a}</Project>
-      <Name>GETmerger.Core</Name>
+    <ProjectReference Include="..\GETmerger.DI\GETmerger.DI.csproj">
+      <Project>{97159a20-032a-40d9-980c-ea192ba3725d}</Project>
+      <Name>GETmerger.DI</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

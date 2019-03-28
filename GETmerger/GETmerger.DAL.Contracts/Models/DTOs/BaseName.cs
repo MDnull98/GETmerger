@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GETmerger.DAL.Contracts.Models
+namespace GETmerger.DAL.Contracts.Models.DTOs
 {
     public class BaseName
     {

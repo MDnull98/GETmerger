@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GETmerger.DAL.Contracts.Models;
-using  GETmerger.DAL.Contracts.Repositories;
+﻿using System.Collections.Generic;
+using GETmerger.DAL.Contracts.Models.DTOs;
+using GETmerger.DAL.Contracts.Repositories;
 
 namespace GETmerger.DAL.Contracts.QueryRepositories
 {
-    public interface ITableQueryRepository:IQueryRepository<TableName>
+    public interface ITableQueryRepository<T>
     {
-
+        List<T> GetAll(string dbname);
+        T Get(string dbname,string tablename);
     }
 }

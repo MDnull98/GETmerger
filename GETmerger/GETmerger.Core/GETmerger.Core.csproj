@@ -7,6 +7,8 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Extensions\" />
+    <Folder Include="QueryRepositories\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
