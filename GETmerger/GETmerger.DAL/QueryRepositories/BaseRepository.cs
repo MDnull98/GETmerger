@@ -1,32 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using GETmerger.Core.QueryRepositories;
 using GETmerger.Core.Repositories;
 using GETmerger.DAL.Contracts.Models.DTOs;
 using GETmerger.DAL.Contracts.Repositories;
 
 namespace GETmerger.DAL.QueryRepositories
 {
-    public class BaseRepository:IBaseRepository<BaseName>
+    public class BaseRepository:BaseQueryRepository, IDBQueryRepository
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-        public List<BaseName> GetAll()
+        public BaseRepository(string dbconnection)
+            :base(dbconnection)
         {
-            List<BaseName> bases = new List<BaseName>();
-            using (IDbConnection db1 = new SqlConnection(connectionString))
-            {
-                bases = db1.Query<BaseName>("SELECT name from sys.databases").ToList();
-            }
-            return bases;
+
         }
 
-        public BaseName Get(string dbname)
+
+        public List<DataBaseDTO> GetAll()
         {
-            throw new System.NotImplementedException();
+            var sql = "SELECT[name], database_id as id from sys.databases";
+
+            return GetList<DataBaseDTO>(sql);
         }
     }
 }

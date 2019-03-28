@@ -10,28 +10,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F59FDFF6-8A8D-4D7F-A8B8-1BB6F70594B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.BLL", "GETmerger.BLL\GETmerger.BLL.csproj", "{ED299A88-EE41-44C8-ACC0-385540597DE6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2C86D389-46FE-4451-A841-15CD699B423A} = {2C86D389-46FE-4451-A841-15CD699B423A}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.BLL.Contracts", "GETmerger.BLL.Contracts\GETmerger.BLL.Contracts.csproj", "{03CC44FB-83FD-4BAC-9704-2C20EC9E3493}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2C86D389-46FE-4451-A841-15CD699B423A} = {2C86D389-46FE-4451-A841-15CD699B423A}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.DI", "GETmerger.DI\GETmerger.DI.csproj", "{97159A20-032A-40D9-980C-EA192BA3725D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{781381E2-5F7A-4F3A-96D6-360AB0B0EA4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.DAL", "GETmerger.DAL\GETmerger.DAL.csproj", "{290DD02F-6508-46A6-99D9-D4DAA38AFF27}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2C86D389-46FE-4451-A841-15CD699B423A} = {2C86D389-46FE-4451-A841-15CD699B423A}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.DAL.Contracts", "GETmerger.DAL.Contracts\GETmerger.DAL.Contracts.csproj", "{3BFB986F-0989-4447-B19B-0C8B5D55FE82}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2C86D389-46FE-4451-A841-15CD699B423A} = {2C86D389-46FE-4451-A841-15CD699B423A}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{85AFD71C-BD86-48B9-812C-2D18E9780EF0}"
 EndProject
@@ -39,7 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Test.Integration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Test.Unit", "GETmerger.Test.Unit\GETmerger.Test.Unit.csproj", "{FB765886-372C-44FC-BC7D-12542AE11D1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GETmerger.Core", "GETmerger.Core\GETmerger.Core.csproj", "{2C86D389-46FE-4451-A841-15CD699B423A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Core.Contracts", "GETmerger.Core.Contracts\GETmerger.Core.Contracts.csproj", "{0F1A576F-AF15-4611-909C-EC9DDBD225D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Core", "GETmerger.Core\GETmerger.Core.csproj", "{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +69,14 @@ Global
 		{FB765886-372C-44FC-BC7D-12542AE11D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB765886-372C-44FC-BC7D-12542AE11D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB765886-372C-44FC-BC7D-12542AE11D1A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C86D389-46FE-4451-A841-15CD699B423A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C86D389-46FE-4451-A841-15CD699B423A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C86D389-46FE-4451-A841-15CD699B423A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C86D389-46FE-4451-A841-15CD699B423A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

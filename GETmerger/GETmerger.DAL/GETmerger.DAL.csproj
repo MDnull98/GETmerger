@@ -63,6 +63,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GETmerger.Core.Contracts\GETmerger.Core.Contracts.csproj">
+      <Project>{0F1A576F-AF15-4611-909C-EC9DDBD225D4}</Project>
+      <Name>GETmerger.Core.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GETmerger.Core\GETmerger.Core.csproj">
+      <Project>{2f3918ea-f9f9-42c2-92d5-4af5d99b27bd}</Project>
+      <Name>GETmerger.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GETmerger.DAL.Contracts\GETmerger.DAL.Contracts.csproj">
       <Project>{3bfb986f-0989-4447-b19b-0c8b5d55fe82}</Project>
       <Name>GETmerger.DAL.Contracts</Name>

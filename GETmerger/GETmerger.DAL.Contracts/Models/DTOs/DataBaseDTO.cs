@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace GETmerger.DAL.Contracts.Models.DTOs
 {
-    public class TableName
+    public class DataBaseDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int BaseID { get; set; }
-        public BaseName BaseName { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GETmerger.DAL.Contracts.EF;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.Repositories;
 
@@ -10,14 +11,20 @@ namespace GETmerger.DAL.Repositories
 {
     public class HistoryRepository : IHistoryRepository
     {
+        private MergerContext db;
+
+        public HistoryRepository(MergerContext context)
+        {
+            db = context;
+        }
         public void Create(HistoryEntity item)
         {
-            throw new NotImplementedException();
+            db.History.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete()
         {
-            throw new NotImplementedException();
+            db.History.Add();
         }
 
         public string ExecQuery(string dbname, string tablename)
