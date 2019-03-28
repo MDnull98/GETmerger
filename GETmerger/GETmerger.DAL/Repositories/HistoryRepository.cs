@@ -22,12 +22,7 @@ namespace GETmerger.DAL.Repositories
             db.History.Add(item);
         }
 
-        public void Delete()
-        {
-            db.History.Add();
-        }
-
-        public string ExecQuery(string dbname, string tablename)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

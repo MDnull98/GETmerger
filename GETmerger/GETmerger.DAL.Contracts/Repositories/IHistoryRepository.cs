@@ -5,6 +5,5 @@ namespace GETmerger.DAL.Contracts.Repositories
 {
     public interface IHistoryRepository:IRepository<HistoryEntity>
     {
-        string ExecQuery(string dbname, string tablename);
     }
 }
