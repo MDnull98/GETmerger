@@ -21,7 +21,7 @@ namespace GETmerger.Core.QueryRepositories
             _dbConnectionString = dbConnectionString ?? string.Empty;
         }
 
-        protected SqlConnection getConnection()
+        protected SqlConnection GetConnection()
         {
             if (_connection == null)
             {
@@ -37,14 +37,14 @@ namespace GETmerger.Core.QueryRepositories
 
         public T Get<T>(string query, ISqlDbParameter parameter = null)
         {
-            var connection = getConnection();
+            var connection = GetConnection();
 
             return connection.Query<T>(query, parameter).SingleOrDefault();
         }
 
         public List<T> GetList<T>(string query, ISqlDbParameter parameter = null)
         {
-            var connection = getConnection();
+            var connection = GetConnection();
 
             return connection.Query<T>(query, parameter).ToList();
         }
