@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Output\DatabasesOutputModelcs.cs" />
+    <Compile Include="Models\Output\DatabasesOutputModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IBaseService.cs" />
+    <Compile Include="Services\IHistoryService.cs" />
+    <Compile Include="Services\ITableService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GETmerger.DAL\GETmerger.DAL.csproj">
@@ -52,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Input\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
