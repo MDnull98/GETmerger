@@ -162,7 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\SQLServerInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +251,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GETmerger.BLL.Contracts\GETmerger.BLL.Contracts.csproj">
+      <Project>{03cc44fb-83fd-4bac-9704-2c20ec9e3493}</Project>
+      <Name>GETmerger.BLL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GETmerger.Core\GETmerger.Core.csproj">
+      <Project>{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}</Project>
+      <Name>GETmerger.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GETmerger.DI\GETmerger.DI.csproj">
+      <Project>{97159a20-032a-40d9-980c-ea192ba3725d}</Project>
+      <Name>GETmerger.DI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

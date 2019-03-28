@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3BFB986F-0989-4447-B19B-0C8B5D55FE82}</ProjectGuid>
+    <ProjectGuid>{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GETmerger.DAL.Contracts</RootNamespace>
-    <AssemblyName>GETmerger.DAL.Contracts</AssemblyName>
+    <RootNamespace>GETmerger.Core</RootNamespace>
+    <AssemblyName>GETmerger.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.1\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,23 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DTOs\DataBaseDTO.cs" />
-    <Compile Include="Models\DomainModels\HistoryEntity.cs" />
-    <Compile Include="QueryRepositories\IDBQueryRepository.cs" />
-    <Compile Include="QueryRepositories\ITableQueryRepository.cs" />
-    <Compile Include="Models\DTOs\TableDTO.cs" />
+    <Compile Include="Data\Queries\SqlDbParameter.cs" />
+    <Compile Include="Models\GenericResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IHistoryRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="QueryRepositories\BaseQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GETmerger.Core.Contracts\GETmerger.Core.Contracts.csproj">
       <Project>{0f1a576f-af15-4611-909c-ec9ddbd225d4}</Project>
       <Name>GETmerger.Core.Contracts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

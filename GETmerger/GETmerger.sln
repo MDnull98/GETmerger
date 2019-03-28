@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4A48FF17-43DE-473E-ACC4-09C058AA1762}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.API", "GETmerger.API\GETmerger.API.csproj", "{C9FC5093-04CE-42AA-9FBD-086C14865641}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD} = {2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F59FDFF6-8A8D-4D7F-A8B8-1BB6F70594B3}"
 EndProject
@@ -26,6 +29,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Test.Integration", "GET.Rest.Test\GETmerger.Test.Integration.csproj", "{85896699-67D2-496F-A9A6-7990E7AF48FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Test.Unit", "GETmerger.Test.Unit\GETmerger.Test.Unit.csproj", "{FB765886-372C-44FC-BC7D-12542AE11D1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Core.Contracts", "GETmerger.Core.Contracts\GETmerger.Core.Contracts.csproj", "{0F1A576F-AF15-4611-909C-EC9DDBD225D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GETmerger.Core", "GETmerger.Core\GETmerger.Core.csproj", "{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +72,14 @@ Global
 		{FB765886-372C-44FC-BC7D-12542AE11D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB765886-372C-44FC-BC7D-12542AE11D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB765886-372C-44FC-BC7D-12542AE11D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1A576F-AF15-4611-909C-EC9DDBD225D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3918EA-F9F9-42C2-92D5-4AF5D99B27BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

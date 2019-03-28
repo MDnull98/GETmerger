@@ -31,7 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.1\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +52,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFContexts\MergerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryRepositories\BaseRepository.cs" />
+    <Compile Include="QueryRepositories\TableRepository.cs" />
+    <Compile Include="Repositories\HistoryRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GETmerger.Core.Contracts\GETmerger.Core.Contracts.csproj">
+      <Project>{0F1A576F-AF15-4611-909C-EC9DDBD225D4}</Project>
+      <Name>GETmerger.Core.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GETmerger.Core\GETmerger.Core.csproj">
+      <Project>{2f3918ea-f9f9-42c2-92d5-4af5d99b27bd}</Project>
+      <Name>GETmerger.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GETmerger.DAL.Contracts\GETmerger.DAL.Contracts.csproj">
+      <Project>{3bfb986f-0989-4447-b19b-0c8b5d55fe82}</Project>
+      <Name>GETmerger.DAL.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
