@@ -8,6 +8,7 @@ using Dapper;
 using GETmerger.Core.QueryRepositories;
 using GETmerger.Core.Repositories;
 using GETmerger.DAL.Contracts.Models.DTOs;
+using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
 
 namespace GETmerger.DAL.QueryRepositories
