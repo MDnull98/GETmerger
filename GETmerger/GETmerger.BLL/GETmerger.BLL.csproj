@@ -43,6 +43,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GETmerger.BLL.Contracts\GETmerger.BLL.Contracts.csproj">
+      <Project>{03cc44fb-83fd-4bac-9704-2c20ec9e3493}</Project>
+      <Name>GETmerger.BLL.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
