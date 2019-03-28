@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GETmerger.DAL.Contracts.EF;
+using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.Repositories;
+using GETmerger.DAL.EFContexts;
 
 namespace GETmerger.DAL.Repositories
 {

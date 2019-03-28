@@ -1,9 +1,10 @@
-﻿using GETmerger.DAL.Contracts.Models.DTOs;
+﻿using System.Collections.Generic;
+using GETmerger.DAL.Contracts.Models.DTOs;
 
 namespace GETmerger.DAL.Contracts.QueryRepositories
 {
     public interface ITableQueryRepository
     {
-        TableDTO GetbyDB(int? id);
+        List<TableDTO> GetbyDB(int? id);
     }
 }

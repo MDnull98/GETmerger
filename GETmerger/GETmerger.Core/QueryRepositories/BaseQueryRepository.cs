@@ -5,8 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Common.Contracts.Data.Queries.Params;
 using Dapper;
+using GETmerger.Core.Contracts.Data.Queries;
 using GETmerger.Core.Contracts.QueryRepositories;
 
 namespace GETmerger.Core.QueryRepositories

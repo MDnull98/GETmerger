@@ -12,6 +12,6 @@ namespace GETmerger.DAL.Contracts.Models.DomainModels
         public string BaseName { get; set; }
         public string TableName { get; set; }
         public string ExecProc{ get; set; }
-        public string GenerScript { get; set; }
+        public string GenerateScript { get; set; }
     }
 }

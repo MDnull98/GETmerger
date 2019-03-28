@@ -3,6 +3,6 @@
     public class TableDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; }S
+        public string Name { get; set; }
     }
 }

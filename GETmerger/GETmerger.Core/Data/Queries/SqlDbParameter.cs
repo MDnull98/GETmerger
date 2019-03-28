@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using Core.Common.Contracts.Data.Queries.Params;
 using Dapper;
+using GETmerger.Core.Contracts.Data.Queries;
 
 namespace GETmerger.Core.Core.Common.Data.Queries
 {
@@ -15,11 +15,6 @@ namespace GETmerger.Core.Core.Common.Data.Queries
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public IEnumerator<IDbDataParameter> GetEnumerator()
         {
             return _parameters.GetEnumerator();

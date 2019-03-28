@@ -13,16 +13,16 @@ using GETmerger.DAL.Contracts.Repositories;
 
 namespace GETmerger.DAL.QueryRepositories
 {
-    public class TableRepository:ITableQueryRepository<TableDTO>
+    public class TableRepository:ITableQueryRepository
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public List<TableDTO> GetAll(string dbname)
+        public List<TableDTO> GetbyDB(int? id)
         {
             List<TableDTO> bases = new List<TableDTO>();
             using (IDbConnection db1 = new SqlConnection(connectionString))
             {
-                bases = db1.Query<TableDTO>("SELECT table_name FROM information_schema.tables where table_schema='<"+dbname+">'").ToList();
+                bases = db1.Query<TableDTO>("SELECT table_name FROM information_schema.tables where table_schema='<"+id+">'").ToList();
             }
             return bases;
         }
