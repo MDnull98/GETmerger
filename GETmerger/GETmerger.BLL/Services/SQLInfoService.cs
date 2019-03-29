@@ -24,21 +24,9 @@ namespace GETmerger.BLL.Services
         }
         public List<DataBaseQueryModel> GetDataBasesList()
         {
-            List<DataBaseQueryModel> DBList = new List<DataBaseQueryModel>();
-            List<DataBaseDTO> list = _db.GetDataBases().ToList();
+            var dbs = _db.GetDataBases();
 
-            foreach (DataBaseDTO item in list)
-            {
-                DataBaseQueryModel dbDTO = new DataBaseQueryModel
-                {
-                    Id = item.Id,
-                    Name = item.Name
-                };
-
-                DBList.Add(dbDTO);
-            }
-
-            return DBList;
+            return dbs.Select(r => r.ToQueryDBModel()).ToList();
         }
 
         public IEnumerable<TableQueryModel> GetTables(int? id)
@@ -51,7 +39,7 @@ namespace GETmerger.BLL.Services
             {
                 var tables = _tableQuery.GetTables(id);
 
-                return tables.Select(x => x.ToQueryModel());
+                return tables.Select(x => x.ToQueryTableModel());
             }
         }
     }

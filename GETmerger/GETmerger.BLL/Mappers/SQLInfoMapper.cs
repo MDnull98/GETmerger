@@ -10,19 +10,31 @@ namespace GETmerger.BLL.Mappers
 {
     public static class SQLInfoMapper
     {
-        public static TableQueryModel ToQueryModel(this TableDTO input)
+        public static TableQueryModel ToQueryTableModel(this TableDTO input)
         {
             if (input == null)
             {
                 return null;
             }
 
-            var mapper = new TableDTO()
+           return new TableQueryModel
             {
                 Id = input.Id,
                 Name = input.Name
             };
-            return mapper.ToQueryModel();
+        }
+        public static DataBaseQueryModel ToQueryDBModel(this DataBaseDTO input)
+        {
+            if (input == null)
+            {
+                return null;
+            }
+
+            return new DataBaseQueryModel
+            {
+                Id = input.Id,
+                Name = input.Name
+            };
         }
     }
 }

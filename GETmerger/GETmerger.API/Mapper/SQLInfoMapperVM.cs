@@ -9,33 +9,33 @@ namespace GETmerger.API.Mapper
 {
     public static class SQLInfoMapperVM
     {
-        public static SQLInfoViewModel ToVMdatabases(this DataBaseQueryModel input)
+        public static SQLInfoDatabaseVM ToVMdatabases(this DataBaseQueryModel input)
         {
             if (input == null)
             {
                 return null;
             }
 
-            var mapper = new DataBaseQueryModel()
+            SQLInfoDatabaseVM mapperdb = new SQLInfoDatabaseVM
             {
                 Id = input.Id,
                 Name = input.Name
             };
-            return mapper.ToVMdatabases();
+            return mapperdb;
         }
-        public static SQLInfoViewModel ToVMtables(this TableQueryModel input)
+        public static SQLInfoTablesVM ToVMtables(this TableQueryModel input)
         {
             if (input == null)
             {
                 return null;
             }
 
-            var mapper = new DataBaseQueryModel()
+            SQLInfoTablesVM mappertables = new SQLInfoTablesVM
             {
                 Id = input.Id,
                 Name = input.Name
             };
-            return mapper.ToVMdatabases();
+            return mappertables;
         }
     }
 }

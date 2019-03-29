@@ -20,6 +20,7 @@ namespace GETmerger.API.Controllers
         {
             _sqlinfo = sqlinfo;
         }
+
         [Route("api/databases")]
         public GenericResponse<IEnumerable<DatabaseOutputModel>> GetDatabases()
         {

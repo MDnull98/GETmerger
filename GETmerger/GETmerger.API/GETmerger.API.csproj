@@ -168,7 +168,8 @@
     </Compile>
     <Compile Include="Mapper\SQLInfoMapperVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\SQLInfoViewModel.cs" />
+    <Compile Include="ViewModels\SQLInfoDatabaseVM.cs" />
+    <Compile Include="ViewModels\SQLInfoTablesVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
