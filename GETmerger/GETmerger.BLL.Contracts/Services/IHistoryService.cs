@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using GETmerger.BLL.Contracts.Models.Input;
 
 namespace GETmerger.BLL.Contracts.Services
 {
     public interface IHistoryService
     {
-        IEnumerable<MarketDTO> GetMarkets();
-        MarketDTO Getmarket(int? id);
-        void DeleteMarket(int id);
-        void Update(MarketDTO marketDTO);
-        void CreateMarket(MarketDTO marketDTO);
+        IEnumerable<HistoryModel> GetHistory();
+        HistoryModel Get(int? id);
+
+        void Delete(int id);
+        void Update(HistoryModel historyDTO);
+        void Create(HistoryModel historyDTO);
     }
 }
