@@ -42,12 +42,22 @@ namespace GETmerger.BLL.Services
 
         public void Create(HistoryModel historyDTO)
         {
-            throw new NotImplementedException();
+            _historyRepository.Create(new HistoryEntity
+            {
+                Id = historyDTO.Id,
+                BaseName = historyDTO.BaseName,
+                TableName = historyDTO.TableName,
+                ExecProc = historyDTO.ExecProc,
+                GenerateScript = historyDTO.GenerateScript,
+                datenow = historyDTO.datenow
+            });
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            HistoryEntity historyEntity = _historyRepository.Get(id);
+            if (historyEntity != null)
+                _historyRepository.Delete(id);
         }
 
         public HistoryModel Get(int? id)
@@ -57,7 +67,15 @@ namespace GETmerger.BLL.Services
 
         public void Update(HistoryModel historyDTO)
         {
-            throw new NotImplementedException();
+            _historyRepository.Update(new HistoryEntity
+            {
+                Id = historyDTO.Id,
+                BaseName = historyDTO.BaseName,
+                TableName = historyDTO.TableName,
+                ExecProc = historyDTO.ExecProc,
+                GenerateScript = historyDTO.GenerateScript,
+                datenow = historyDTO.datenow
+            });
         }
     }
 }

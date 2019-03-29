@@ -24,6 +24,7 @@ namespace GETmerger.BLL.Services
             else
             {
                 TableDTO table = _tableQuery.GetbyDB(id);
+
                 return new TableQueryModel
                 {
                     Id = table.Id,
