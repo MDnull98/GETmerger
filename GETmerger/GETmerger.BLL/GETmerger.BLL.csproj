@@ -45,10 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\SQLInfoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DBQueryService.cs" />
     <Compile Include="Services\HistoryService.cs" />
-    <Compile Include="Services\TableQueryService.cs" />
+    <Compile Include="Services\SQLInfoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GETmerger.BLL.Contracts\GETmerger.BLL.Contracts.csproj">
@@ -67,5 +67,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,8 +4,8 @@ using GETmerger.DAL.Contracts.Models.DTOs;
 
 namespace GETmerger.DAL.Contracts.QueryRepositories
 {
-    public interface IDBQueryRepository: IBaseQueryRepository
+    public interface IDBQueryRepository
     {
-        List<DataBaseDTO> GetAll();
+        List<DataBaseDTO> GetDataBases();
     }
 }

@@ -56,6 +56,7 @@ namespace GETmerger.BLL.Services
         public void Delete(int id)
         {
             HistoryEntity historyEntity = _historyRepository.Get(id);
+
             if (historyEntity != null)
                 _historyRepository.Delete(id);
         }

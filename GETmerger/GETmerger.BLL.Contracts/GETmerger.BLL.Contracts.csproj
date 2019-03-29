@@ -45,11 +45,9 @@
     <Compile Include="Models\Input\HistoryModel.cs" />
     <Compile Include="Models\Input\TableQueryModel.cs" />
     <Compile Include="Models\Output\DatabaseOutputModel.cs" />
-    <Compile Include="Models\Output\TableOutputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IDBQueryService.cs" />
     <Compile Include="Services\IHistoryService.cs" />
-    <Compile Include="Services\ITableQueryService.cs" />
+    <Compile Include="Services\ISQLInfoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GETmerger.DAL\GETmerger.DAL.csproj">
