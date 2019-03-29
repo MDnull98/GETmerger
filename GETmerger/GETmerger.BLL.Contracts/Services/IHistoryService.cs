@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GETmerger.BLL.Contracts.Services
 {
     public interface IHistoryService
     {
+        IEnumerable<MarketDTO> GetMarkets();
+        MarketDTO Getmarket(int? id);
+        void DeleteMarket(int id);
+        void Update(MarketDTO marketDTO);
+        void CreateMarket(MarketDTO marketDTO);
     }
 }

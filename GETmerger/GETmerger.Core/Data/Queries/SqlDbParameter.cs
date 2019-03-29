@@ -46,7 +46,7 @@ namespace GETmerger.Core.Core.Common.Data.Queries
         void SqlMapper.IDynamicParameters.AddParameters(IDbCommand command, SqlMapper.Identity identity)
         {
             foreach (IDbDataParameter parameter in _parameters)
-                command.Parameters.Add(parameter);
+            command.Parameters.Add(parameter);
         }
 
         public override string ToString()

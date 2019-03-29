@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,22 +26,24 @@ namespace GETmerger.DAL.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            HistoryEntity historyEntity = db.History.Find(id);
+            if (historyEntity != null)
+                db.History.Remove(historyEntity);
         }
 
         public HistoryEntity Get(int? id)
         {
-            throw new NotImplementedException();
+            return db.History.Where(b => b.Id == id).FirstOrDefault();
         }
 
         public List<HistoryEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return db.History.ToList();
         }
 
         public void Update(HistoryEntity item)
         {
-            throw new NotImplementedException();
+            db.Entry(item).State = EntityState.Modified;
         }
     }
 }
