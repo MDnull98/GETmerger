@@ -1,9 +1,9 @@
-﻿using GETmerger.Core.Repositories;
+﻿using GETmerger.Core.Contracts.Repositories;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 
 namespace GETmerger.DAL.Contracts.Repositories
 {
-    public interface IHistoryRepository:IRepository<HistoryEntity>
+    public interface IHistoryRepository:IBaseRepository<HistoryEntity>
     {
     }
 }

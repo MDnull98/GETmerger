@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GETmerger.BLL.Contracts.Models.Input;
 
 namespace GETmerger.BLL.Contracts.Services
 {
     public interface IHistoryService
     {
+        IEnumerable<HistoryModel> GetHistory();
+        HistoryModel Get(int? id);
+
+        void Delete(int id);
+        void Update(HistoryModel historyDTO);
+        void Create(HistoryModel historyDTO);
     }
 }

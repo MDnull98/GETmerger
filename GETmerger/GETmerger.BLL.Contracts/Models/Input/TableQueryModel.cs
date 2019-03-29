@@ -1,6 +1,6 @@
-﻿namespace GETmerger.DAL.Contracts.Models.DTOs
+﻿namespace GETmerger.BLL.Contracts.Models.Input
 {
-    public class DataBaseDTO
+    public class TableQueryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
