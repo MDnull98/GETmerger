@@ -17,11 +17,13 @@ namespace GETmerger.BLL.Services
         private IDBQueryRepository _db { get; }
         private ITableQueryRepository _tableQuery { get; }
 
-        public SQLInfoService(IDBQueryRepository db, ITableQueryRepository tableQuery)
+        public SQLInfoService(ITableQueryRepository tableQuery, IDBQueryRepository db)
         {
-            _db = db;
             _tableQuery = tableQuery;
+            _db = db;
         }
+
+
         public List<DataBaseQueryModel> GetDataBasesList()
         {
             var dbs = _db.GetDataBases();

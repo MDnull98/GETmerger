@@ -39,20 +39,20 @@ namespace GETmerger.API.Controllers
             return new GenericResponse<string>("databse2");
         }
 
-        // GET api/databases
-        [HttpGet]
-        public IEnumerable<SQLInfoDatabaseVM> GetDatabases1()
-        {
-            var db = _sqlinfo.GetDataBasesList();
-            return db.Select(x => x.ToVMdatabases());
-        }
+        //// GET api/databases
+        //[HttpGet]
+        //public IEnumerable<SQLInfoDatabaseVM> GetDatabases1()
+        //{
+        //    var db = _sqlinfo.GetDataBasesList();
+        //    return db.Select(x => x.ToVMdatabases());
+        //}
 
-        // GET api/tables
-        [HttpGet]
-        public IEnumerable<SQLInfoTablesVM> GetTables1(int dbid)
-        {
-            var tablesVM = _sqlinfo.GetTables(dbid);
-            return tablesVM.Select(y => y.ToVMtables());
-        }
+        //// GET api/tables
+        //[HttpGet]
+        //public IEnumerable<SQLInfoTablesVM> GetTables1(int dbid)
+        //{
+        //    var tablesVM = _sqlinfo.GetTables(dbid);
+        //    return tablesVM.Select(y => y.ToVMtables());
+        //}
     }
 }
