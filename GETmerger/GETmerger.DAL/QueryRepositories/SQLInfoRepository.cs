@@ -9,7 +9,7 @@ using GETmerger.DAL.Contracts.QueryRepositories;
 
 namespace GETmerger.DAL.QueryRepositories
 {
-    public class SQLInfoRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository,
+    public class SQLInfoRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository
     {
         public SQLInfoRepository(string dbconnection)
             : base(dbconnection)

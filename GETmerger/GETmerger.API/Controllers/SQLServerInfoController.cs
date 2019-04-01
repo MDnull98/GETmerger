@@ -41,7 +41,7 @@ namespace GETmerger.API.Controllers
 
         // GET api/databases
         [HttpGet]
-        public IEnumerable<SQLInfoViewModel> GetDatabases1()
+        public IEnumerable<SQLInfoDatabaseVM> GetDatabases1()
         {
             var db = _sqlinfo.GetDataBasesList();
             return db.Select(x => x.ToVMdatabases());
@@ -49,7 +49,7 @@ namespace GETmerger.API.Controllers
 
         // GET api/tables
         [HttpGet]
-        public IEnumerable<SQLInfoViewModel> GetTables1(int dbid)
+        public IEnumerable<SQLInfoTablesVM> GetTables1(int dbid)
         {
             var tablesVM = _sqlinfo.GetTables(dbid);
             return tablesVM.Select(y => y.ToVMtables());
