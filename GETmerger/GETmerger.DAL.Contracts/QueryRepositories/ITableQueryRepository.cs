@@ -5,6 +5,6 @@ namespace GETmerger.DAL.Contracts.QueryRepositories
 {
     public interface ITableQueryRepository
     {
-        List<TableDTO> GetTables(int? databaseId);
+        List<TableDTO> GetTables(int databaseId);
     }
 }

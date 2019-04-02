@@ -12,8 +12,8 @@ namespace GETmerger.API.Controllers
     public class SQLServerInfoController : ApiController
     {
         // 1 GetDatabases()
-        // 2 GetTables(string databaseName)
-        // 3 GetMergeScript(string databaseName, string tableName)
+        // 2 GetTables(int databaseID)
+        // 3 GetMergeScript(int databaseID, int tableID)
         private ISQLInfoService _sqlinfo;
 
         public SQLServerInfoController(ISQLInfoService sqlinfo)
@@ -22,37 +22,25 @@ namespace GETmerger.API.Controllers
         }
 
         [Route("api/databases")]
-        public GenericResponse<IEnumerable<DatabaseOutputModel>> GetDatabases()
-        {
-            return new GenericResponse<IEnumerable<DatabaseOutputModel>>(null);
-        }
-
-        [Route("api/tables")]
-        public GenericResponse<IEnumerable<string>> GetTables(string databaseName)
-        {
-            return new GenericResponse<IEnumerable<string>>(new[] { "databse1", "databse2" });
-        }
-
-        [Route("api/merge-script")]
-        public GenericResponse<string> GetMergeScript(string databaseName, string tableName)
-        {
-            return new GenericResponse<string>("databse2");
-        }
-
-        // GET api/databases
-        [HttpGet]
-        public IEnumerable<SQLInfoViewModel> GetDatabases1()
+        public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
         {
             var db = _sqlinfo.GetDataBasesList();
-            return db.Select(x => x.ToVMdatabases());
+            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
         }
 
-        // GET api/tables
-        [HttpGet]
-        public IEnumerable<SQLInfoViewModel> GetTables1(int dbid)
+        [Route("api/databases/{databaseId}/tables")]
+        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseId)
         {
-            var tablesVM = _sqlinfo.GetTables(dbid);
-            return tablesVM.Select(y => y.ToVMtables());
+            var tablesVM = _sqlinfo.GetTables(databaseId);
+            return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
+        }
+
+        [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
+        public GenericResponse<string> GetMergeScript([FromUri]int databaseID, [FromUri] int tableID)
+        {
+            //correct
+            var tablesVM = _sqlinfo.GetTables(databaseID);
+            return new GenericResponse<string>("databse2");
         }
     }
 }

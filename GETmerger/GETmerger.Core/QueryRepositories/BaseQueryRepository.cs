@@ -48,5 +48,11 @@ namespace GETmerger.Core.QueryRepositories
 
             return connection.Query<T>(query, parameter).ToList();
         }
+
+        //public string MergeScript<T>(string query, ISqlDbParameter parameter)
+        //{
+        //    var connection = GetConnection();
+        //    return connection.Query<T>(query, parameter).ToString();
+        //}
     }
 }
