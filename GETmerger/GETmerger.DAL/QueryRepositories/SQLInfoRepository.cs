@@ -9,7 +9,7 @@ using GETmerger.DAL.Contracts.QueryRepositories;
 
 namespace GETmerger.DAL.QueryRepositories
 {
-    public class SQLInfoRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository
+    public class SQLInfoRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository, IScriptRepository
     {
         public SQLInfoRepository(string dbconnection)
             : base(dbconnection)
@@ -21,15 +21,20 @@ namespace GETmerger.DAL.QueryRepositories
             const string sql = "SELECT [name], database_id as id FROM    sys.databases  WHERE name NOT IN('master', 'tempdb', 'model', 'msdb')";
             return GetList<DataBaseDTO>(sql);
         }
-
         public List<TableDTO> GetTables(int databaseId)
         {
-            var sql = $"DECLARE @DatabaseName nvarchar(100);" +
-                      $"\r\nselect @DatabaseName = [name]\r\nfrom sys.databases\r\nwhere database_id = {databaseId}\r\n" +
-                      $"DECLARE @Query nvarchar(max) = 'USE ' + @DatabaseName + ' SELECT * FROM sys.Tables" +
-                      $" WHERE name NOT IN(''sysdiagrams'')'\r\nexec  sp_executesql @Query;";
+            //достает имена таблиц по id БД
+            var sql = $"DECLARE @DatabaseName nvarchar(100) Select @DatabaseName = [name]\r\nfrom sys.databases\r\nwhere database_id = {databaseId} DECLARE @Query nvarchar(max) = 'USE ' + @DatabaseName + ' SELECT * FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')'\r\nexec  sp_executesql @Query;";
             var res = GetList<TableDTO>(sql);
             return res;
         }
+
+        public string GetScript(int databaseID, int tableID)
+        {
+            var sql = $"EXEC {databaseID} from sys.databases where database_id = {databaseID} AND table_id = {tableID}";
+            var result = MergeScript(sql).ToString();
+            return result;
+        }
+
     }
 }
