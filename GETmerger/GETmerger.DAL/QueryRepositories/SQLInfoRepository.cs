@@ -18,14 +18,7 @@ namespace GETmerger.DAL.QueryRepositories
         }
         public List<DataBaseDTO> GetDataBases()
         {
-            var sql = "SELECT [name], database_id as id FROM    sys.databases  WHERE name NOT IN('master', 'tempdb', 'model', 'msdb')";
-            //if (sys == null)
-            //{
-            //    return GetList<DataBaseDTO>(sql);
-            //}
-
-           // sql += " WHERE name NOT IN('master', 'tempdb', 'model', 'msdb')";
-
+            const string sql = "SELECT [name], database_id as id FROM    sys.databases  WHERE name NOT IN('master', 'tempdb', 'model', 'msdb')";
             return GetList<DataBaseDTO>(sql);
         }
 

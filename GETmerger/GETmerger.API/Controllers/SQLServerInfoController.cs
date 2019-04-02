@@ -28,14 +28,14 @@ namespace GETmerger.API.Controllers
             return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
         }
 
-        [Route("api/tables")]
-        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables([FromUri] int databaseID)
+        [Route("api/databases/{databaseId}/tables")]
+        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseId)
         {
-            var tablesVM = _sqlinfo.GetTables(databaseID);
+            var tablesVM = _sqlinfo.GetTables(databaseId);
             return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
         }
 
-        [Route("api/merge-script")]
+        [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
         public GenericResponse<string> GetMergeScript([FromUri]int databaseID, [FromUri] int tableID)
         {
             //correct
