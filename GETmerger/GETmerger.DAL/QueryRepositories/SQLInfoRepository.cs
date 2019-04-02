@@ -24,10 +24,8 @@ namespace GETmerger.DAL.QueryRepositories
 
         public List<TableDTO> GetTables(int databaseId)
         {
-            var sql = $"DECLARE @DatabaseName nvarchar(100);" +
-                      $"\r\nselect @DatabaseName = [name]\r\nfrom sys.databases\r\nwhere database_id = {databaseId}\r\n" +
-                      $"DECLARE @Query nvarchar(max) = 'USE ' + @DatabaseName + ' SELECT * FROM sys.Tables" +
-                      $" WHERE name NOT IN(''sysdiagrams'')'\r\nexec  sp_executesql @Query;";
+            //достает имена таблиц по id БД
+            var sql = $"DECLARE @DatabaseName nvarchar(100) Select @DatabaseName = [name]\r\nfrom sys.databases\r\nwhere database_id = {databaseId} DECLARE @Query nvarchar(max) = 'USE ' + @DatabaseName + ' SELECT * FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')'\r\nexec  sp_executesql @Query;";
             var res = GetList<TableDTO>(sql);
             return res;
         }
