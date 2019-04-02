@@ -16,11 +16,13 @@ namespace GETmerger.BLL.Services
     {
         private IDBQueryRepository _db { get; }
         private ITableQueryRepository _tableQuery { get; }
+        private IScriptRepository _scriptQuery { get; }
 
-        public SQLInfoService(ITableQueryRepository tableQuery, IDBQueryRepository db)
+        public SQLInfoService(ITableQueryRepository tableQuery, IDBQueryRepository db, IScriptRepository scriptQuery)
         {
             _tableQuery = tableQuery;
             _db = db;
+            _scriptQuery = scriptQuery;
         }
 
 
@@ -36,6 +38,11 @@ namespace GETmerger.BLL.Services
                 var tables = _tableQuery.GetTables(databaseid);
 
                 return tables.Select(x => x.ToQueryTableModel());
+        }
+
+        public string MergeScript(int databaseID, int tableID)
+        {
+            return _scriptQuery.GetScript(databaseID, tableID);
         }
     }
 }

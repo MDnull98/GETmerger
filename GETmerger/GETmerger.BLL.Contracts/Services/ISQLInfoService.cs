@@ -11,5 +11,6 @@ namespace GETmerger.BLL.Contracts.Services
     {
         List<DataBaseQueryModel> GetDataBasesList();
         IEnumerable<TableQueryModel> GetTables(int databaseId);
+        string MergeScript(int databaseID, int tableID);
     }
 }
