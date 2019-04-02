@@ -14,14 +14,13 @@ namespace GETmerger.API.App_Start
 {
     public class AutofacAPIconfig
     {
-        public  static void ConfigureContainer()
+        public  static void ConfigureContainer(string connectionString)
         {
             var builder = new ContainerBuilder();
-
             var config = GlobalConfiguration.Configuration;
            
-            //builder.RegisterModule(new AutofacDAL());
-            //builder.RegisterModule(new AutofacBLL());
+            builder.RegisterModule(new AutofacDAL(connectionString));
+            builder.RegisterModule(new AutofacBLL());
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

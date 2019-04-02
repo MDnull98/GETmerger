@@ -12,8 +12,8 @@ namespace GETmerger.API.Controllers
     public class SQLServerInfoController : ApiController
     {
         // 1 GetDatabases()
-        // 2 GetTables(string databaseName)
-        // 3 GetMergeScript(string databaseName, string tableName)
+        // 2 GetTables(int databaseID)
+        // 3 GetMergeScript(int databaseID, int tableID)
         private ISQLInfoService _sqlinfo;
 
         public SQLServerInfoController(ISQLInfoService sqlinfo)
@@ -22,37 +22,25 @@ namespace GETmerger.API.Controllers
         }
 
         [Route("api/databases")]
-        public GenericResponse<IEnumerable<DatabaseOutputModel>> GetDatabases()
+        public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
         {
-            return new GenericResponse<IEnumerable<DatabaseOutputModel>>(null);
+            var db = _sqlinfo.GetDataBasesList();
+            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
         }
 
         [Route("api/tables")]
-        public GenericResponse<IEnumerable<string>> GetTables(string databaseName)
+        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables([FromUri] int databaseID)
         {
-            return new GenericResponse<IEnumerable<string>>(new[] { "databse1", "databse2" });
+            var tablesVM = _sqlinfo.GetTables(databaseID);
+            return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
         }
 
         [Route("api/merge-script")]
-        public GenericResponse<string> GetMergeScript(string databaseName, string tableName)
+        public GenericResponse<string> GetMergeScript([FromUri]int databaseID, [FromUri] int tableID)
         {
+            //correct
+            var tablesVM = _sqlinfo.GetTables(databaseID);
             return new GenericResponse<string>("databse2");
         }
-
-        //// GET api/databases
-        //[HttpGet]
-        //public IEnumerable<SQLInfoDatabaseVM> GetDatabases1()
-        //{
-        //    var db = _sqlinfo.GetDataBasesList();
-        //    return db.Select(x => x.ToVMdatabases());
-        //}
-
-        //// GET api/tables
-        //[HttpGet]
-        //public IEnumerable<SQLInfoTablesVM> GetTables1(int dbid)
-        //{
-        //    var tablesVM = _sqlinfo.GetTables(dbid);
-        //    return tablesVM.Select(y => y.ToVMtables());
-        //}
     }
 }
