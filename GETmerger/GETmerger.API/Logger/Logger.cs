@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using log4net;
 using log4net.Config;
+using Microsoft.VisualBasic.Logging;
 
 namespace GETmerger.API
 {

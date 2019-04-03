@@ -31,36 +31,48 @@ namespace GETmerger.API.Controllers
         [System.Web.Http.Route("api/databases")]
         public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases(ActionExecutingContext filterContext)
         {
-            var message = new StringBuilder();
-            message.Append(string.Format("Executing controller {0}, action {1}",
-            filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
-            filterContext.ActionDescriptor.ActionName));
-            log.Info(message);
-            var db = _sqlinfo.GetDataBasesList();
-            log.Info("Output: "+db);
-            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
-        }
-
-        [System.Web.Http.Route("api/databases/{databaseID}/tables")]
-        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseID, ActionExecutingContext filterContext)
-        {
-            log.Info("Request for receiving tables in database_id=" + databaseID);
             //log
             var message = new StringBuilder();
             message.Append(string.Format("Executing controller {0}, action {1}",
             filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
             filterContext.ActionDescriptor.ActionName));
             log.Info(message);
+
             var db = _sqlinfo.GetDataBasesList();
-            log.Info("Output: " + db);
+
+            log.Info("Output: "+db);
+
+            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
+        }
+
+        [System.Web.Http.Route("api/databases/{databaseID}/tables")]
+        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseID, ActionExecutingContext filterContext)
+        {
+            //log
+            var message = new StringBuilder();
+            message.Append(string.Format("Executing controller {0}, action {1}",
+            filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
+            filterContext.ActionDescriptor.ActionName));
+            log.Info(message);
+
             var tablesVM = _sqlinfo.GetTables(databaseID);
+
+            log.Info("Output: " + tablesVM);
+
             return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
         }
 
         [System.Web.Http.Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
-        public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
+        public GenericResponse<string> GetMergeScript(int databaseID, int tableID, ActionExecutingContext filterContext)
         {
+            //log
+            var message = new StringBuilder();
+            message.Append(string.Format("Executing controller {0}, action {1}",
+            filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
+            filterContext.ActionDescriptor.ActionName));
+            log.Info(message);
             var script = _sqlinfo.MergeScript(databaseID, tableID);
+            log.Info("Output: " + script);
             return new GenericResponse<string>(script);
         }
     }
