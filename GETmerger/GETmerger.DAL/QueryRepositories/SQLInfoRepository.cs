@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using GETmerger.Core.QueryRepositories;
 using GETmerger.DAL.Contracts.Models.DTOs;
 using GETmerger.DAL.Contracts.QueryRepositories;
+using log4net;
+using Microsoft.VisualBasic.Logging;
 
 namespace GETmerger.DAL.QueryRepositories
 {
     public class SQLInfoRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository, IScriptRepository
     {
+        private static readonly ILog log = LogManager.GetLogger("ApiLog");
         public SQLInfoRepository(string dbconnection)
             : base(dbconnection)
         {

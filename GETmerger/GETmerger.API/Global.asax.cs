@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -12,11 +13,14 @@ using System.Web.Routing;
 using GETmerger.API.App_Start;
 using GETmerger.DI;
 using GETmerger.DI.Modules;
+using log4net;
 
 namespace GETmerger.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private static readonly ILog log = LogManager.GetLogger("ApiLog");
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -24,6 +28,7 @@ namespace GETmerger.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
 
             //DI
             //AutofacAPIconfig.ConfigureContainer();
@@ -35,6 +40,14 @@ namespace GETmerger.API
 
             var connectionString = ConfigurationManager.ConnectionStrings["MergerContext"].ConnectionString;
             Autofacconfig.ConfigureContainer(config, currentAssembly, connectionString);
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            log.Debug("++++++++++++++++++++++++++++");
+            log.Error("Exception - \n" + ex);
+            log.Debug("++++++++++++++++++++++++++++");
         }
     }
 }

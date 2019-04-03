@@ -25,7 +25,6 @@ namespace GETmerger.BLL.Services
             _scriptQuery = scriptQuery;
         }
 
-
         public List<DataBaseQueryModel> GetDataBasesList()
         {
             var dbs = _db.GetDataBases();
