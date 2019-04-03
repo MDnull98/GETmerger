@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -22,10 +23,31 @@ namespace GETmerger.API.Logger
             if (log.IsDebugEnabled)
             {
                 var message = new StringBuilder();
-                message.Append(string.Format("Executing controller {0}, action {1}",
+                message.Append(string.Format("Executing controller {0}, action {1}.",
                     filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
                     filterContext.ActionDescriptor.ActionName));
+                var k = filterContext.ActionParameters.Values.ToString();
+                message.Append(string.Format("Method get parameters :{0}",k));
                 log.Debug(message);
+            }
+            else
+            {
+                log.Error("Error in Controller (debug not enabled)");
+            }
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            if (log.IsDebugEnabled)
+            {
+                var message = new StringBuilder();
+                var k = filterContext.ActionDescriptor.GetParameters().ToString();
+                message.Append(string.Format("Output : {0}", k));
+                log.Debug(message);
+            }
+            else
+            {
+                log.Error("Error in Controller",filterContext.Exception);
             }
         }
 
