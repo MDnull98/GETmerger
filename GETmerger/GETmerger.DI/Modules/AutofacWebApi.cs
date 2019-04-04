@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using System.Web.Http;
 using Autofac;
-using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Module = Autofac.Module;
 

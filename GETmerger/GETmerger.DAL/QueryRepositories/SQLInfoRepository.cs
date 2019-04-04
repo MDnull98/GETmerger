@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GETmerger.Core.QueryRepositories;
 using GETmerger.DAL.Contracts.Models.DTOs;
 using GETmerger.DAL.Contracts.QueryRepositories;
@@ -25,7 +24,7 @@ namespace GETmerger.DAL.QueryRepositories
             //table_id to names
             var sql = $"DECLARE @DataBaseName nvarchar(100) Select @DataBaseName = [name]\r\n" +
                       $"from sys.databases\r\n" +
-                      $@"where database_id = {databaseId} DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' SELECT * FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')'\r\n" +
+                      $@"where database_id = {databaseId} DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' SELECT  FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')'\r\n" +
                       $"exec  sp_executesql @Query;";
             var res = GetList<TableDTO>(sql);
             return res;
@@ -33,19 +32,17 @@ namespace GETmerger.DAL.QueryRepositories
 
         public ScriptModel GetMergeScript(int databaseID, int tableID)
         {
-            var sql = $@"DECLARE
-            DECLARE @DataBaseName nvarchar(100)
-            Select @DataBaseName = [name]
-            from sys.databases
-                where database_id = {databaseID}
-            DECLARE @TableName nvarchar(100)
-            Select @TableName = [name]
-            from @DataBaseName where table_id = {tableID}
-            DECLARE @Query nvarchar(max)
-            USE @DataBaseName
-            GO
-                exec sp_generate_merge '+@TableName+'
-            exec sp_executesql @Query; ";
+            var sql = $@"DECLARE @DataBaseId numeric(10)
+                         DECLARE @DataBaseName nvarchar(100)
+                         Select @DataBaseName = [name]
+                         from sys.databases
+                         where database_id = {databaseID}
+                         DECLARE @TableId numeric(10)
+                         DECLARE @TableName nvarchar(100)
+                         Select @TableName = [name]
+                         from sys.tables where [object_id] = {tableID}
+                         DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' USE @DataBaseName GO exec sp_generate_merge '+@TableName+''')'
+                         exec  sp_executesql @Query;";
             //need to correcting 
 
             return Get<ScriptModel>(sql);
