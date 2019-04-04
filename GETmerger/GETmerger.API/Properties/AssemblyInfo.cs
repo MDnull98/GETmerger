@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("© , 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 
 // Установка значения False в параметре ComVisible делает типы в этой сборке невидимыми
 // для компонентов COM.  Если требуется обратиться к типу в этой сборке через

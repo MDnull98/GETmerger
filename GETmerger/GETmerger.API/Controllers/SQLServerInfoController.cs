@@ -3,9 +3,10 @@ using System.Linq;
 using System.Web.Http;
 using GETmerger.API.Mapper;
 using GETmerger.API.ViewModels;
-using GETmerger.BLL.Contracts.Models.Output;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.Core.Models;
+using log4net;
+using System.Web.Http.Filters;
 
 namespace GETmerger.API.Controllers
 {
@@ -14,11 +15,14 @@ namespace GETmerger.API.Controllers
         // 1 GetDatabases()
         // 2 GetTables(int databaseID)
         // 3 GetMergeScript(int databaseID, int tableID)
+        private static ILog log = LogManager.GetLogger("LOGGER");
         private ISQLInfoService _sqlinfo;
+        private ActionFilterAttribute _actionfilter;
 
-        public SQLServerInfoController(ISQLInfoService sqlinfo)
+        public SQLServerInfoController(ISQLInfoService sqlinfo, ActionFilterAttribute actionfilter)
         {
             _sqlinfo = sqlinfo;
+            _actionfilter = actionfilter;
         }
 
         [Route("api/databases")]
@@ -38,7 +42,7 @@ namespace GETmerger.API.Controllers
         [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
         public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
         {
-            var script = _sqlinfo.MergeScript(databaseID, tableID);
+            string script = _sqlinfo.GetMergeScript(databaseID, tableID).ToString();
             return new GenericResponse<string>(script);
         }
     }

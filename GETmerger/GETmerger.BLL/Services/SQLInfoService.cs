@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.BLL.Mappers;
-using GETmerger.DAL.Contracts.Models.DTOs;
+using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.QueryRepositories;
+using GETmerger.DAL.Contracts.Repositories;
 
 namespace GETmerger.BLL.Services
 {
@@ -17,32 +15,45 @@ namespace GETmerger.BLL.Services
         private IDBQueryRepository _db { get; }
         private ITableQueryRepository _tableQuery { get; }
         private IScriptRepository _scriptQuery { get; }
+        private IHistoryRepository _historyRepository { get; }
 
-        public SQLInfoService(ITableQueryRepository tableQuery, IDBQueryRepository db, IScriptRepository scriptQuery)
+        public SQLInfoService(ITableQueryRepository tableQuery, IDBQueryRepository db, IScriptRepository scriptQuery, IHistoryRepository historyRepository)
         {
             _tableQuery = tableQuery;
             _db = db;
             _scriptQuery = scriptQuery;
+            _historyRepository = historyRepository;
         }
 
-
-        public List<DataBaseQueryModel> GetDataBasesList()
+        public List<DBQueryInputModel> GetDataBasesList()
         {
             var dbs = _db.GetDataBases();
 
             return dbs.Select(r => r.ToQueryDBModel()).ToList();
         }
 
-        public IEnumerable<TableQueryModel> GetTables(int databaseid)
+        public IEnumerable<TableQueryInputModel> GetTables(int databaseid)
         {
                 var tables = _tableQuery.GetTables(databaseid);
 
                 return tables.Select(x => x.ToQueryTableModel());
         }
-
-        public string MergeScript(int databaseID, int tableID)
+        public string GetMergeScript(int databaseID, int tableID)
         {
-            return _scriptQuery.GetScript(databaseID, tableID);
+            string xml = _scriptQuery.GetMergeScript(databaseID, tableID).ToString();
+            string stringsql = XMLParser.GetSQL(xml);
+
+            DateTime dt = DateTime.Now;
+
+            _historyRepository.Create(new HistoryEntity
+            {
+                DatabaseId = databaseID,
+                TableId = tableID,
+                GenerateScript = stringsql,
+                AddDate = dt
+            });
+
+            return stringsql;
         }
     }
 }

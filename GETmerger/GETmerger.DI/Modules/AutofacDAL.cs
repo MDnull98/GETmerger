@@ -1,10 +1,4 @@
-﻿using System.Reflection;
-using System.Web.Http;
-using System.Web.Mvc;
-using Autofac;
-using Autofac.Features.ResolveAnything;
-using Autofac.Integration.Mvc;
-using GETmerger.Core.QueryRepositories;
+﻿using Autofac;
 using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
 using GETmerger.DAL.EFContexts;

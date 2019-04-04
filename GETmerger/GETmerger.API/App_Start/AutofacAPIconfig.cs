@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using GETmerger.DI.Modules;
-using Module = Autofac.Module;
 
 namespace GETmerger.API.App_Start
 {
@@ -17,7 +16,6 @@ namespace GETmerger.API.App_Start
         public  static void ConfigureContainer(string connectionString)
         {
             var builder = new ContainerBuilder();
-            var config = GlobalConfiguration.Configuration;
            
             builder.RegisterModule(new AutofacDAL(connectionString));
             builder.RegisterModule(new AutofacBLL());

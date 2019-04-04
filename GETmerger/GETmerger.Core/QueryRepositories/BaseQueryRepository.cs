@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 using GETmerger.Core.Contracts.Data.Queries;
 using GETmerger.Core.Contracts.QueryRepositories;
 
 namespace GETmerger.Core.QueryRepositories
 {
-    public class BaseQueryRepository:IBaseQueryRepository
+    public class BaseQueryRepository : IBaseQueryRepository
     {
         private readonly string _dbConnectionString;
         private SqlConnection _connection;
@@ -49,6 +46,7 @@ namespace GETmerger.Core.QueryRepositories
             return connection.Query<T>(query, parameter).ToList();
         }
 
+        //delete and use the T Get<T>
         public string MergeScript(string query, ISqlDbParameter parameter=null)
         {
             var connection = GetConnection();

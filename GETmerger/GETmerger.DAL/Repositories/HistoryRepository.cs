@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.Repositories;
 using GETmerger.DAL.EFContexts;
@@ -22,6 +18,8 @@ namespace GETmerger.DAL.Repositories
         public void Create(HistoryEntity item)
         {
             db.History.Add(item);
+
+            //or ExecuteSqlCommand
         }
 
         public void Delete(int id)
