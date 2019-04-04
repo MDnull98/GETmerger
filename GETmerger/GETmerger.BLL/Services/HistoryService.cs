@@ -4,6 +4,7 @@ using System.Linq;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.DAL.Contracts.Models.DomainModels;
+using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
 
 namespace GETmerger.BLL.Services
@@ -11,46 +12,34 @@ namespace GETmerger.BLL.Services
     public class HistoryService : IHistoryService
     {
         private IHistoryRepository _historyRepository { get; }
+        private IScriptRepository _scriptRepository { get; }
 
-        public HistoryService(IHistoryRepository historyRepository)
+        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository)
         {
             _historyRepository = historyRepository;
+            _scriptRepository = scriptRepository;
         }
 
-        public IEnumerable<HistoryModel> GetHistory()
+        public IEnumerable<HistoryInputModel> GetHistory()
         {
-            List<HistoryModel> DBList = new List<HistoryModel>();
+            List<HistoryInputModel> DBList = new List<HistoryInputModel>();
             List<HistoryEntity> list = _historyRepository.GetAll().ToList();
 
             foreach (HistoryEntity item in list)
             {
-                HistoryModel dbDTO = new HistoryModel
+                HistoryInputModel dbDTO = new HistoryInputModel
                 {
                     Id =item.Id,
-                    BaseName = item.BaseName,
-                    TableName = item.TableName,
-                    ExecProc = item.ExecProc,
+                    DatabaseId =item.DatabaseId,
+                    TableId = item.TableId,
                     GenerateScript = item.GenerateScript,
-                    datenow = item.datenow
+                    AddDate = item.AddDate
                 };
 
                 DBList.Add(dbDTO);
             }
 
             return DBList;
-        }
-
-        public void Create(HistoryModel historyDTO)
-        {
-            _historyRepository.Create(new HistoryEntity
-            {
-                Id = historyDTO.Id,
-                BaseName = historyDTO.BaseName,
-                TableName = historyDTO.TableName,
-                ExecProc = historyDTO.ExecProc,
-                GenerateScript = historyDTO.GenerateScript,
-                datenow = historyDTO.datenow
-            });
         }
 
         public void Delete(int id)
@@ -61,22 +50,9 @@ namespace GETmerger.BLL.Services
                 _historyRepository.Delete(id);
         }
 
-        public HistoryModel Get(int? id)
+        public HistoryInputModel Get(int? id)
         {
             throw new NotImplementedException();
-        }
-
-        public void Update(HistoryModel historyDTO)
-        {
-            _historyRepository.Update(new HistoryEntity
-            {
-                Id = historyDTO.Id,
-                BaseName = historyDTO.BaseName,
-                TableName = historyDTO.TableName,
-                ExecProc = historyDTO.ExecProc,
-                GenerateScript = historyDTO.GenerateScript,
-                datenow = historyDTO.datenow
-            });
         }
     }
 }

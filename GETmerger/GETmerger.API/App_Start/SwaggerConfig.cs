@@ -14,7 +14,7 @@ namespace GETmerger.API
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
             GlobalConfiguration.Configuration
-                .EnableSwagger(c => c.SingleApiVersion("v1", "GETmerger API"))
+                .EnableSwagger(c => c.SingleApiVersion("v1", "A title for your API"))
                 .EnableSwaggerUi();
         }
     }

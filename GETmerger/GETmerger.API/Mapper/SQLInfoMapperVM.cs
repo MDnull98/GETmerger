@@ -9,7 +9,7 @@ namespace GETmerger.API.Mapper
 {
     public static class SQLInfoMapperVM
     {
-        public static SQLInfoDatabaseVM ToVMdatabases(this DataBaseQueryModel input)
+        public static SQLInfoDatabaseVM ToVMdatabases(this DBQueryInputModel input)
         {
             if (input == null)
             {
@@ -23,7 +23,7 @@ namespace GETmerger.API.Mapper
             };
             return mapperdb;
         }
-        public static SQLInfoTablesVM ToVMtables(this TableQueryModel input)
+        public static SQLInfoTablesVM ToVMtables(this TableQueryInputModel input)
         {
             if (input == null)
             {

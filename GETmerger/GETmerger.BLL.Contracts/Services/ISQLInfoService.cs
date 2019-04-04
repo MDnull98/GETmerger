@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using GETmerger.BLL.Contracts.Models.Input;
 
 namespace GETmerger.BLL.Contracts.Services
 {
     public interface ISQLInfoService
     {
-        List<DataBaseQueryModel> GetDataBasesList();
-        IEnumerable<TableQueryModel> GetTables(int databaseId);
-        string MergeScript(int databaseID, int tableID);
+        List<DBQueryInputModel> GetDataBasesList();
+        IEnumerable<TableQueryInputModel> GetTables(int databaseId);
+        string GetMergeScript(int databaseID, int tableID);
     }
 }
