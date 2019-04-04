@@ -22,6 +22,8 @@ namespace GETmerger.DAL.Repositories
         public void Create(HistoryEntity item)
         {
             db.History.Add(item);
+
+            //or ExecuteSqlCommand
         }
 
         public void Delete(int id)

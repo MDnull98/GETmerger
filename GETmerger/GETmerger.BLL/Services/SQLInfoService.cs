@@ -42,7 +42,9 @@ namespace GETmerger.BLL.Services
         {
             string xml = _scriptQuery.GetMergeScript(databaseID, tableID).ToString();
             string stringsql = XMLParser.GetSQL(xml);
+
             DateTime dt = DateTime.Now;
+
             _historyRepository.Create(new HistoryEntity
             {
                 DatabaseId = databaseID,
@@ -50,6 +52,7 @@ namespace GETmerger.BLL.Services
                 GenerateScript = stringsql,
                 AddDate = dt
             });
+
             return stringsql;
         }
     }
