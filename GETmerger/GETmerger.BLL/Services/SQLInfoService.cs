@@ -12,35 +12,35 @@ namespace GETmerger.BLL.Services
 {
     public class SQLInfoService : ISQLInfoService
     {
-        private IDBQueryRepository _db { get; }
-        private ITableQueryRepository _tableQuery { get; }
-        private IScriptRepository _scriptQuery { get; }
+        private IDBQueryRepository _dbQueryRepository { get; }
+        private ITableQueryRepository _tableQueryRepository { get; }
+        private IScriptRepository _scriptQueryRepository { get; }
         private IHistoryRepository _historyRepository { get; }
 
-        public SQLInfoService(ITableQueryRepository tableQuery, IDBQueryRepository db, IScriptRepository scriptQuery, IHistoryRepository historyRepository)
+        public SQLInfoService(ITableQueryRepository tableQueryRepository, IDBQueryRepository dbQueryRepository, IScriptRepository scriptQueryRepository, IHistoryRepository historyRepository)
         {
-            _tableQuery = tableQuery;
-            _db = db;
-            _scriptQuery = scriptQuery;
+            _tableQueryRepository = tableQueryRepository;
+            _dbQueryRepository = dbQueryRepository;
+            _scriptQueryRepository = scriptQueryRepository;
             _historyRepository = historyRepository;
         }
 
         public List<DBQueryInputModel> GetDataBasesList()
         {
-            var dbs = _db.GetDataBases();
+            var dbs = _dbQueryRepository.GetDataBases();
 
             return dbs.Select(r => r.ToQueryDBModel()).ToList();
         }
 
-        public IEnumerable<TableQueryInputModel> GetTables(int databaseid)
+        public List<TableQueryInputModel> GetTables(int databaseid)
         {
-                var tables = _tableQuery.GetTables(databaseid);
+                var tables = _tableQueryRepository.GetTables(databaseid);
 
-                return tables.Select(x => x.ToQueryTableModel());
+                return tables.Select(x => x.ToQueryTableModel()).ToList();
         }
         public string GetMergeScript(int databaseID, int tableID)
         {
-            string xml = _scriptQuery.GetMergeScript(databaseID, tableID).ToString();
+            string xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID).ToString();
             string stringsql = XMLParser.GetSQL(xml);
 
             DateTime dt = DateTime.Now;

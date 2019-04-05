@@ -9,6 +9,5 @@ namespace GETmerger.Core.Contracts.Repositories
 
         void Create(T item);
         void Delete(int id);
-        void Update(T item);
     }
 }

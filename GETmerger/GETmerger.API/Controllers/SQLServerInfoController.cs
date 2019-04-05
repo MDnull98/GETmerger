@@ -16,33 +16,31 @@ namespace GETmerger.API.Controllers
         // 2 GetTables(int databaseID)
         // 3 GetMergeScript(int databaseID, int tableID)
         private static ILog log = LogManager.GetLogger("LOGGER");
-        private ISQLInfoService _sqlinfo;
-        private ActionFilterAttribute _actionfilter;
+        private ISQLInfoService _sqlinfoService;
 
-        public SQLServerInfoController(ISQLInfoService sqlinfo, ActionFilterAttribute actionfilter)
+        public SQLServerInfoController(ISQLInfoService sqlinfoService)
         {
-            _sqlinfo = sqlinfo;
-            _actionfilter = actionfilter;
+            _sqlinfoService = sqlinfoService;
         }
 
         [Route("api/databases")]
         public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
         {
-            var db = _sqlinfo.GetDataBasesList();
+            var db = _sqlinfoService.GetDataBasesList();
             return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
         }
 
         [Route("api/databases/{databaseID}/tables")]
         public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseID)
         {
-            var tablesVM = _sqlinfo.GetTables(databaseID);
+            var tablesVM = _sqlinfoService.GetTables(databaseID);
             return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
         }
 
         [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
         public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
         {
-            string script = _sqlinfo.GetMergeScript(databaseID, tableID).ToString();
+            string script = _sqlinfoService.GetMergeScript(databaseID, tableID);
             return new GenericResponse<string>(script);
         }
     }

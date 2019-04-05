@@ -6,7 +6,7 @@ namespace GETmerger.BLL.Contracts.Services
     public interface ISQLInfoService
     {
         List<DBQueryInputModel> GetDataBasesList();
-        IEnumerable<TableQueryInputModel> GetTables(int databaseId);
+        List<TableQueryInputModel> GetTables(int databaseId);
         string GetMergeScript(int databaseID, int tableID);
     }
 }

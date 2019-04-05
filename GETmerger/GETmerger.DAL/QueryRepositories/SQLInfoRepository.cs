@@ -47,12 +47,5 @@ namespace GETmerger.DAL.QueryRepositories
 
             return Get<ScriptModel>(sql);
         }
-
-        //public void Addhistory(int databaseID, int tableID,string sqlscript)
-        //{
-        //    DateTime adddate = DateTime.Now;
-        //    var sql = $@"INSERT INTO History(databaseID,tableID,procedure,mergescript,date) VALUES ({databaseID},{tableID},'procedure','{sqlscript}','{adddate}')";
-        //    var result = MergeScript(sql).ToString();
-        //}
     }
 }
