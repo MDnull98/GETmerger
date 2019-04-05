@@ -45,7 +45,7 @@ namespace GETmerger.API
         {
             Exception ex = Server.GetLastError();
             log.Debug("++++++++++++++++++++++++++++");
-            log.Error("Exception - \n" + ex);
+            log.Error(@"Exception - \n" + ex);
             log.Debug("++++++++++++++++++++++++++++");
         }
     }

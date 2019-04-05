@@ -6,7 +6,7 @@ using Module = Autofac.Module;
 
 namespace GETmerger.DI.Modules
 {
-    public class AutofacWebApi : Module
+    public class AutofacWebApi:Module
     {
         private readonly Assembly _assembly;
         private readonly HttpConfiguration _config;

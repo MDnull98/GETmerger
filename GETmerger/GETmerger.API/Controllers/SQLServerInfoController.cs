@@ -6,7 +6,6 @@ using GETmerger.API.ViewModels;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.Core.Models;
 using log4net;
-using System.Web.Http.Filters;
 
 namespace GETmerger.API.Controllers
 {

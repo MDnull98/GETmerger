@@ -30,7 +30,7 @@ namespace GETmerger.API.Logger
                 var message = new StringBuilder();
                 var k = filterContext.ActionDescriptor.GetParameters().ToString();
                 message.Append(string.Format("Output : {0}", k));
-                log.Debug(message);
+                log.Info(message);
         }
 
         public void OnException(ExceptionContext filterContext, HandleErrorAttribute hea)
