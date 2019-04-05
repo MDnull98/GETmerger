@@ -33,7 +33,7 @@ namespace GETmerger.DAL.QueryRepositories
             return GetList<TableDTO>(sql);
         }
 
-        public ScriptModel GetMergeScript(int databaseID, int tableID)
+        public string GetMergeScript(int databaseID, int tableID)
         {
             // get merge-script via database_id AND table_id
             //var sql = $@"DECLARE @DataBaseId numeric(10)
@@ -50,7 +50,7 @@ namespace GETmerger.DAL.QueryRepositories
             //             exec  sp_executesql @Query;";
             var sql = $@"use SchoolContext; exec sp_generate_merge Pupils";;
 
-            return Get<ScriptModel>(sql);
+            return Get<string>(sql);
         }
     }
 }

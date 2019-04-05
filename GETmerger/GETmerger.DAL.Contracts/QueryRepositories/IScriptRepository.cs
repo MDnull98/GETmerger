@@ -9,6 +9,6 @@ namespace GETmerger.DAL.Contracts.QueryRepositories
 {
     public interface IScriptRepository
     {
-        ScriptModel GetMergeScript(int databaseID, int tableID);
+        string GetMergeScript(int databaseID, int tableID);
     }
 }

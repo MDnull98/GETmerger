@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using GETmerger.API.Logger;
 
 namespace GETmerger.API

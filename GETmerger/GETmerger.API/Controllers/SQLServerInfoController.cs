@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using GETmerger.API.Logger;
 using GETmerger.API.Mapper;
 using GETmerger.API.ViewModels;
 using GETmerger.BLL.Contracts.Services;
@@ -15,7 +17,7 @@ namespace GETmerger.API.Controllers
         // 2 GetTables(int databaseID)
         // 3 GetMergeScript(int databaseID, int tableID)
         private static ILog log = LogManager.GetLogger("LOGGER");
-        private ISQLInfoService _sqlinfoService;
+        private readonly ISQLInfoService _sqlinfoService;
 
         public SQLServerInfoController(ISQLInfoService sqlinfoService)
         {

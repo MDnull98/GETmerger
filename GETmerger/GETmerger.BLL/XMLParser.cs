@@ -12,6 +12,7 @@ namespace GETmerger.BLL
         {
             string pars = xmlfile.Substring(4);
             pars = xmlfile.Substring(0, xmlfile.Length - 2);
+            pars = pars.Replace(@"\r\n", " ");
             return pars;
         }
     }

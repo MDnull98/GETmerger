@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GETmerger.API.Logger;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.BLL.Mappers;
-using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
+using log4net;
 
 namespace GETmerger.BLL.Services
 {
     public class SQLInfoService : ISQLInfoService
     {
-        private IDBQueryRepository _dbQueryRepository { get; }
-        private ITableQueryRepository _tableQueryRepository { get; }
-        private IScriptRepository _scriptQueryRepository { get; }
-        private IHistoryRepository _historyRepository { get; }
+        private readonly IDBQueryRepository _dbQueryRepository;
+        private readonly ITableQueryRepository _tableQueryRepository;
+        private readonly IScriptRepository _scriptQueryRepository;
+        private readonly IHistoryRepository _historyRepository;
+
+        private static ILog log = LogManager.GetLogger("LOGGER");
 
         public SQLInfoService(ITableQueryRepository tableQueryRepository, IDBQueryRepository dbQueryRepository, IScriptRepository scriptQueryRepository, IHistoryRepository historyRepository)
         {
@@ -24,36 +27,37 @@ namespace GETmerger.BLL.Services
             _scriptQueryRepository = scriptQueryRepository;
             _historyRepository = historyRepository;
         }
-
+        [LoggingFilter]
         public List<DBQueryInputModel> GetDataBasesList()
         {
+            throw new Exception();
             var dbs = _dbQueryRepository.GetDataBases();
-
             return dbs.Select(r => r.ToQueryDBModel()).ToList();
         }
 
-        public List<TableQueryInputModel> GetTables(int databaseid)
+        public List<TableQueryInputModel> GetTables(int databaseId)
         {
-                var tables = _tableQueryRepository.GetTables(databaseid);
+                var tables = _tableQueryRepository.GetTables(databaseId);
 
                 return tables.Select(x => x.ToQueryTableModel()).ToList();
         }
+
         public string GetMergeScript(int databaseID, int tableID)
         {
-            string xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID).Name;
-            string stringsql = XMLParser.GetSQL(xml);
+            var xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID);
+            var stringSql = XMLParser.GetSQL(xml);
 
-            DateTime dt = DateTime.Now;
+            //var dt = DateTime.Now;
 
-            _historyRepository.Create(new HistoryEntity
-            {
-                DatabaseId = databaseID,
-                TableId = tableID,
-                GenerateScript = "",
-                AddDate = dt
-            });
+            //_historyRepository.Create(new HistoryEntity
+            //{
+            //    DatabaseId = databaseID,
+            //    TableId = tableID,
+            //    GenerateScript = stringSql,
+            //    AddDate = dt
+            //});
 
-            return stringsql;
+            return stringSql;
         }
     }
 }
