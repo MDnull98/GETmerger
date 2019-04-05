@@ -9,7 +9,5 @@ namespace GETmerger.BLL.Contracts.Services
         HistoryModel Get(int? id);
 
         void Delete(int id);
-        void Update(HistoryModel historyDTO);
-        void Create(HistoryModel historyDTO);
     }
 }

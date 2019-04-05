@@ -33,24 +33,10 @@ namespace GETmerger.BLL.Services
                     GenerateScript = item.GenerateScript,
                     datenow = item.datenow
                 };
-
                 DBList.Add(dbDTO);
             }
 
             return DBList;
-        }
-
-        public void Create(HistoryModel historyDTO)
-        {
-            _historyRepository.Create(new HistoryEntity
-            {
-                Id = historyDTO.Id,
-                BaseName = historyDTO.BaseName,
-                TableName = historyDTO.TableName,
-                ExecProc = historyDTO.ExecProc,
-                GenerateScript = historyDTO.GenerateScript,
-                datenow = historyDTO.datenow
-            });
         }
 
         public void Delete(int id)
@@ -64,19 +50,6 @@ namespace GETmerger.BLL.Services
         public HistoryModel Get(int? id)
         {
             throw new NotImplementedException();
-        }
-
-        public void Update(HistoryModel historyDTO)
-        {
-            _historyRepository.Update(new HistoryEntity
-            {
-                Id = historyDTO.Id,
-                BaseName = historyDTO.BaseName,
-                TableName = historyDTO.TableName,
-                ExecProc = historyDTO.ExecProc,
-                GenerateScript = historyDTO.GenerateScript,
-                datenow = historyDTO.datenow
-            });
         }
     }
 }

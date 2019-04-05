@@ -14,31 +14,34 @@ namespace GETmerger.API.Controllers
         // 1 GetDatabases()
         // 2 GetTables(int databaseID)
         // 3 GetMergeScript(int databaseID, int tableID)
-        private ISQLInfoService _sqlinfo;
+        private ISQLInfoService _sqlInfoService;
 
-        public SQLServerInfoController(ISQLInfoService sqlinfo)
+        public SQLServerInfoController(ISQLInfoService sqlInfoService)
         {
-            _sqlinfo = sqlinfo;
+            _sqlInfoService = sqlInfoService;
         }
 
         [Route("api/databases")]
         public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
         {
-            var db = _sqlinfo.GetDataBasesList();
+            var db = _sqlInfoService.GetDataBasesList();
+
             return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
         }
 
         [Route("api/databases/{databaseID}/tables")]
         public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseID)
         {
-            var tablesVM = _sqlinfo.GetTables(databaseID);
+            var tablesVM = _sqlInfoService.GetTables(databaseID);
+
             return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
         }
 
         [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
         public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
         {
-            var script = _sqlinfo.MergeScript(databaseID, tableID);
+            var script = _sqlInfoService.MergeScript(databaseID, tableID).ToString();
+
             return new GenericResponse<string>(script);
         }
     }

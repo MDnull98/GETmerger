@@ -20,7 +20,7 @@ namespace GETmerger.API.App_Start
             var config = GlobalConfiguration.Configuration;
            
             builder.RegisterModule(new AutofacDAL(connectionString));
-            builder.RegisterModule(new AutofacBLL());
+            builder.RegisterModule(new AutofacBLL(connectionString));
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

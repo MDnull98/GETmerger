@@ -13,37 +13,36 @@ namespace GETmerger.DAL.Repositories
 {
     public class HistoryRepository : IHistoryRepository
     {
-        private MergerContext db;
+        private MergerContext _databaseContext;
 
         public HistoryRepository(MergerContext context)
         {
-            db = context;
+            _databaseContext = context;
         }
         public void Create(HistoryEntity item)
         {
-            db.History.Add(item);
+            _databaseContext.History.Add(item);
+            _databaseContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            HistoryEntity historyEntity = db.History.Find(id);
+            HistoryEntity historyEntity = _databaseContext.History.Find(id);
+
             if (historyEntity != null)
-                db.History.Remove(historyEntity);
+            {
+                _databaseContext.History.Remove(historyEntity);
+            }
         }
 
         public HistoryEntity Get(int? id)
         {
-            return db.History.Where(b => b.Id == id).FirstOrDefault();
+            return _databaseContext.History.Where(b => b.Id == id).FirstOrDefault();
         }
 
         public List<HistoryEntity> GetAll()
         {
-            return db.History.ToList();
-        }
-
-        public void Update(HistoryEntity item)
-        {
-            db.Entry(item).State = EntityState.Modified;
+            return _databaseContext.History.ToList();
         }
     }
 }
