@@ -40,7 +40,7 @@ namespace GETmerger.BLL.Services
         }
         public string GetMergeScript(int databaseID, int tableID)
         {
-            string xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID).ToString();
+            string xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID).Name;
             string stringsql = XMLParser.GetSQL(xml);
 
             DateTime dt = DateTime.Now;
@@ -49,7 +49,7 @@ namespace GETmerger.BLL.Services
             {
                 DatabaseId = databaseID,
                 TableId = tableID,
-                GenerateScript = stringsql,
+                GenerateScript = "",
                 AddDate = dt
             });
 
