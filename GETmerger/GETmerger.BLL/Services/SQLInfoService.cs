@@ -5,6 +5,7 @@ using GETmerger.API.Logger;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.BLL.Mappers;
+using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
 using log4net;
@@ -47,15 +48,15 @@ namespace GETmerger.BLL.Services
             var xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID);
             var stringSql = XMLParser.GetSQL(xml);
 
-            //var dt = DateTime.Now;
+            var dt = DateTime.Now;
 
-            //_historyRepository.Create(new HistoryEntity
-            //{
-            //    DatabaseId = databaseID,
-            //    TableId = tableID,
-            //    GenerateScript = stringSql,
-            //    AddDate = dt
-            //});
+            _historyRepository.Create(new HistoryEntity
+            {
+                DatabaseId = databaseID,
+                TableId = tableID,
+                GenerateScript = stringSql,
+                AddDate = dt
+            });
 
             return stringSql;
         }
