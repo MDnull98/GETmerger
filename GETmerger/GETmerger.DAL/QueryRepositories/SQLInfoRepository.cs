@@ -44,7 +44,8 @@ namespace GETmerger.DAL.QueryRepositories
                          DECLARE @TableName nvarchar(100)
                          Select @TableName = [name]
                          from sys.tables where [object_id] = {tableID}
-                         DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' USE @DataBaseName GO exec sp_generate_merge '+@TableName+''')'
+                         DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' Select '+@TableName+' = [name] 
+                         from sys.tables where [object_id] = 341576255; exec sp_generate_merge '+@TableName+''
                          exec  sp_executesql @Query;";
             return Get<ScriptModel>(sql);
         }

@@ -45,12 +45,5 @@ namespace GETmerger.Core.QueryRepositories
 
             return connection.Query<T>(query, parameter).ToList();
         }
-
-        //delete and use the T Get<T>
-        public string MergeScript(string query, ISqlDbParameter parameter=null)
-        {
-            var connection = GetConnection();
-            return connection.Query(query, parameter).ToString();
-        }
     }
 }

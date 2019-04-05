@@ -9,12 +9,6 @@ namespace GETmerger.API.Controllers
 {
     public class HistoryController : Controller
     {
-        private IHistoryService _historyService;
-
-        public HistoryController(IHistoryService historyService)
-        {
-            _historyService = historyService;
-        }
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";

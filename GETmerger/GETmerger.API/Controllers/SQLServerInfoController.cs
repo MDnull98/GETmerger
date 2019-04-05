@@ -26,8 +26,8 @@ namespace GETmerger.API.Controllers
         [Route("api/databases")]
         public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
         {
-            var db = _sqlinfoService.GetDataBasesList();
-            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
+            var dbVM = _sqlinfoService.GetDataBasesList();
+            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(dbVM.Select(x => x.ToVMdatabases()));
         }
 
         [Route("api/databases/{databaseID}/tables")]

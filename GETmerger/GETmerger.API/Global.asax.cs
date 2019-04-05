@@ -31,7 +31,6 @@ namespace GETmerger.API
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
 
             //DI
-            //AutofacAPIconfig.ConfigureContainer();
             var currentAssembly = Assembly.GetExecutingAssembly();
             var config = GlobalConfiguration.Configuration;
 
