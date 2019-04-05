@@ -5,7 +5,7 @@ using System.Web;
 
 namespace GETmerger.API.ViewModels
 {
-    public class SQLInfoTablesVM
+    public class TableQueryInputModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

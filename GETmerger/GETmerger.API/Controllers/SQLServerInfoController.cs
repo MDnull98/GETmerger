@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Http;
 using GETmerger.API.Mapper;
 using GETmerger.API.ViewModels;
-using GETmerger.BLL.Contracts.Models.Output;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.Core.Models;
 
@@ -22,19 +21,19 @@ namespace GETmerger.API.Controllers
         }
 
         [Route("api/databases")]
-        public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
+        public GenericResponse<IEnumerable<DBQueryInputModel>> GetDatabases()
         {
             var db = _sqlInfoService.GetDataBasesList();
 
-            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(db.Select(x => x.ToVMdatabases()));
+            return new GenericResponse<IEnumerable<DBQueryInputModel>>(db.Select(x => x.ToVMdatabases()));
         }
 
         [Route("api/databases/{databaseID}/tables")]
-        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseID)
+        public GenericResponse<IEnumerable<TableQueryInputModel>> GetTables(int databaseID)
         {
             var tablesVM = _sqlInfoService.GetTables(databaseID);
 
-            return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
+            return new GenericResponse<IEnumerable<TableQueryInputModel>>(tablesVM.Select(t => t.ToVMtables()));
         }
 
         [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
