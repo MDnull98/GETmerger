@@ -7,7 +7,7 @@ namespace GETmerger.DAL.EFContexts
     {
         public DbSet<HistoryEntity> History { get; set; }
 
-        public MergerContext() : base("MergerContext")
+        public MergerContext() : base(@"Data Source=MDNULL\SQLEXPRESS;Initial Catalog=MarketContext;Integrated Security=True;")
         {
             
         }

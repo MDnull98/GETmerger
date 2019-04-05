@@ -17,15 +17,18 @@ namespace GETmerger.DAL.QueryRepositories
         public List<DataBaseDTO> GetDataBases()
         {
             const string sql = "SELECT [name], database_id as id FROM    sys.databases  WHERE name NOT IN('master', 'tempdb', 'model', 'msdb')";
+
             return GetList<DataBaseDTO>(sql);
         }
         public List<TableDTO> GetTables(int databaseId)
         {
-            //table_id to names
-            var sql = $"DECLARE @DataBaseName nvarchar(100) Select @DataBaseName = [name]\r\n" +
-                      $"from sys.databases\r\n" +
-                      $@"where database_id = {databaseId} DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' SELECT  FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')'\r\n" +
-                      $"exec  sp_executesql @Query;";
+            //get table names via database_id
+            var sql = $@"DECLARE @DataBaseName nvarchar(100) Select @DataBaseName = [name]
+                         from sys.databases where database_id = {databaseId}
+                         DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + '
+                         SELECT  FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')' 
+                         exec  sp_executesql @Query;";
+
             var res = GetList<TableDTO>(sql);
             return res;
         }
@@ -43,8 +46,6 @@ namespace GETmerger.DAL.QueryRepositories
                          from sys.tables where [object_id] = {tableID}
                          DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName + ' USE @DataBaseName GO exec sp_generate_merge '+@TableName+''')'
                          exec  sp_executesql @Query;";
-            //need to correcting 
-
             return Get<ScriptModel>(sql);
         }
     }
