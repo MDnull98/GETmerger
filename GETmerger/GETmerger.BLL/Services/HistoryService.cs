@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc.Html;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.DAL.Contracts.Models.DomainModels;
@@ -22,12 +23,12 @@ namespace GETmerger.BLL.Services
 
         public IEnumerable<HistoryInputModel> GetHistory()
         {
-            List<HistoryInputModel> DBList = new List<HistoryInputModel>();
-            List<HistoryEntity> list = _historyRepository.GetAll().ToList();
+            var DBList = new List<HistoryInputModel>();
+            var list = _historyRepository.GetAll().ToList();
 
             foreach (HistoryEntity item in list)
             {
-                HistoryInputModel dbDTO = new HistoryInputModel
+                var dbDTO = new HistoryInputModel
                 {
                     Id =item.Id,
                     DatabaseId =item.DatabaseId,
@@ -42,17 +43,25 @@ namespace GETmerger.BLL.Services
             return DBList;
         }
 
+        public HistoryInputModel Get(int id)
+        {
+            var historyEntity = _historyRepository.Get(id);
+                return new HistoryInputModel
+                {
+                    Id = historyEntity.Id,
+                    DatabaseId = historyEntity.DatabaseId,
+                    TableId = historyEntity.TableId,
+                    GenerateScript = historyEntity.GenerateScript,
+                    AddDate = historyEntity.AddDate
+                };
+        }
+
         public void Delete(int id)
         {
-            HistoryEntity historyEntity = _historyRepository.Get(id);
+            var historyEntity = _historyRepository.Get(id);
 
             if (historyEntity != null)
                 _historyRepository.Delete(id);
-        }
-
-        public HistoryInputModel Get(int? id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GETmerger.Core.Models
+﻿using System.Collections.Generic;
+
+namespace GETmerger.Core.Models
 {
     public class GenericResponse<T>
     {

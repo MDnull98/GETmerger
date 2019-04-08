@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using GETmerger.BLL.Contracts.Models.Input;
+using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.Models.DTOs;
 
 namespace GETmerger.BLL.Mappers
@@ -34,6 +35,22 @@ namespace GETmerger.BLL.Mappers
             {
                 Id = input.Id,
                 Name = input.Name
+            };
+        }
+
+        public static HistoryInputModel ToHistoryModel(this HistoryEntity input)
+        {
+            if (input == null)
+            {
+                return null;
+            }
+
+            return new HistoryInputModel()
+            {
+                DatabaseId = input.DatabaseId,
+                TableId = input.TableId,
+                GenerateScript = input.GenerateScript,
+                AddDate = input.AddDate
             };
         }
     }

@@ -23,6 +23,7 @@ namespace GETmerger.API.Mapper
             };
             return mapperdb;
         }
+
         public static SQLInfoTablesVM ToVMtables(this TableQueryInputModel input)
         {
             if (input == null)
@@ -36,6 +37,24 @@ namespace GETmerger.API.Mapper
                 Name = input.Name
             };
             return mappertables;
+        }
+
+        public static HistoryVM ToVMHistory(this HistoryInputModel input)
+        {
+            if (input == null)
+            {
+                return null;
+            }
+
+            HistoryVM history = new HistoryVM
+            {
+                Id = input.Id,
+                DatabaseId = input.DatabaseId,
+                TableId = input.TableId,
+                GenerateScript = input.GenerateScript,
+                AddDate = input.AddDate
+            };
+            return history;
         }
     }
 }

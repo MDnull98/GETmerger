@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using System.Web.Mvc;
+using log4net;
 using Microsoft.VisualBasic.Logging;
 
 namespace GETmerger.API.Logger
@@ -8,20 +10,18 @@ namespace GETmerger.API.Logger
     {
         #region Logging
 
-        public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        // public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static ILog log = LogManager.GetLogger("LOGGER");
 
         #endregion
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
                 var message = new StringBuilder();
-                message.Append(string.Format("Executing controller {0}, action {1}.",
-                    filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
-                    filterContext.ActionDescriptor.ActionName));
-
+                message.Append(string.Format($@"Executing method {MethodBase.GetCurrentMethod().Name} include {filterContext.ActionDescriptor.GetParameters()}"));
+                log.Info(message);
                 var k = filterContext.ActionParameters.Values.ToString();
-                message.Append(string.Format("Method get parameters :{0}",k));
-
+                message.Append(string.Format($@"Method get parameters :{k}"));
                 log.Info(message);
         }
 
@@ -29,14 +29,13 @@ namespace GETmerger.API.Logger
         {
                 var message = new StringBuilder();
                 var k = filterContext.ActionDescriptor.GetParameters().ToString();
-                message.Append(string.Format("Output : {0}", k));
+                message.Append(string.Format($@"Output : {k}"));
                 log.Info(message);
         }
 
         public void OnException(ExceptionContext filterContext)
         {
           log.Error("Error in Controller", filterContext.Exception);
-          
         }
     }
 }

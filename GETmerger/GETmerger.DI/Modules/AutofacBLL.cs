@@ -16,6 +16,8 @@ namespace GETmerger.DI.Modules
         {
             moduleBuilder.RegisterType<SQLInfoService>()
                 .As(typeof(ISQLInfoService));
+            moduleBuilder.RegisterType<HistoryService>()
+                .As(typeof(IHistoryService));
             //.WithParameter("dbconnection", _connectionString);
             // moduleBuilder.RegisterType<SQLInfoService>().As<ISQLInfoService>();
         }
