@@ -21,10 +21,10 @@ namespace GETmerger.API.Controllers
         }
 
         [Route("api/databases")]
-        public GenericResponse<IEnumerable<DBQueryInputModel>> GetDatabases()
+        public GenericResponse<IEnumerable<DBQueryModel>> GetDatabases()
         {
             var dbVM = _sqlinfoService.GetDataBasesList();
-            return new GenericResponse<IEnumerable<DBQueryInputModel>>(dbVM);
+            return new GenericResponse<IEnumerable<DBQueryModel>>(dbVM);
         }
 
         [Route("api/databases/{databaseID}/tables")]

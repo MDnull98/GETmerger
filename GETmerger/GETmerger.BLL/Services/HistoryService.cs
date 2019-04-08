@@ -15,20 +15,13 @@ namespace GETmerger.BLL.Services
     {
         private IHistoryRepository _historyRepository { get; }
         private IScriptRepository _scriptRepository { get; }
-        private IHistoryInfoRepository _historyInfoRepository {get;}
+        private IHistoryQueryRepository _historyQueryRepository {get;}
 
-        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository, IHistoryInfoRepository historyInfoRepository)
+        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository, IHistoryQueryRepository historyQueryRepository)
         {
             _historyRepository = historyRepository;
             _scriptRepository = scriptRepository;
-            _historyInfoRepository = historyInfoRepository;
-        }
-
-        //historyVM
-        public IEnumerable<HistoryOutputModel> GetHistory()
-        {
-            var dbs = _historyInfoRepository.GetHistory();
-            return dbs.Select(r => r.ToHistoryModel()).ToList();
+            _historyQueryRepository = historyQueryRepository;
         }
 
         public HistoryOutputModel Get(int id)
@@ -51,7 +44,13 @@ namespace GETmerger.BLL.Services
             {
                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            _historyRepository.Delete(id);
+           _historyRepository.Delete(id);
+        }
+
+        public IEnumerable<HistoryOutputModel> GetHistory()
+        {
+            var dbs = _historyQueryRepository.GetHistory();
+            return dbs.Select(r => r.ToHistoryModel()).ToList();
         }
     }
 }

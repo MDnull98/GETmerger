@@ -44,9 +44,10 @@
   <ItemGroup>
     <Compile Include="Models\DTOs\DataBaseDTO.cs" />
     <Compile Include="Models\DomainModels\HistoryEntity.cs" />
+    <Compile Include="Models\DTOs\HistoryDTO.cs" />
     <Compile Include="Models\DTOs\ScriptModel.cs" />
     <Compile Include="QueryRepositories\IDBQueryRepository.cs" />
-    <Compile Include="QueryRepositories\IHistoryInfoRepository.cs" />
+    <Compile Include="QueryRepositories\IHistoryQueryRepository.cs" />
     <Compile Include="QueryRepositories\IScriptRepository.cs" />
     <Compile Include="QueryRepositories\ITableQueryRepository.cs" />
     <Compile Include="Models\DTOs\TableDTO.cs" />

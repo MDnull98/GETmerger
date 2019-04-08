@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Input\DBQueryInputModel.cs" />
+    <Compile Include="Models\Input\DBQueryModel.cs" />
     <Compile Include="Models\Output\HistoryOutputModel.cs" />
-    <Compile Include="Models\Input\ScriptinputModel.cs" />
     <Compile Include="Models\Input\TableQueryInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IHistoryService.cs" />

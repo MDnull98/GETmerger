@@ -24,21 +24,21 @@ namespace GETmerger.BLL.Mappers
                 Name = input.Name
             };
         }
-        public static DBQueryInputModel ToQueryDBModel(this DataBaseDTO input)
+        public static DBQueryModel ToQueryDBModel(this DataBaseDTO input)
         {
             if (input == null)
             {
                 return null;
             }
 
-            return new DBQueryInputModel
+            return new DBQueryModel
             {
                 Id = input.Id,
                 Name = input.Name
             };
         }
 
-        public static HistoryOutputModel ToHistoryModel(this HistoryEntity input)
+        public static HistoryOutputModel ToHistoryModel(this HistoryDTO input)
         {
             if (input == null)
             {

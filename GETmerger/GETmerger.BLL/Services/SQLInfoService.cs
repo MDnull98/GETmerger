@@ -30,7 +30,7 @@ namespace GETmerger.BLL.Services
             _historyRepository = historyRepository;
         }
         [MyErrorHandler]
-        public List<DBQueryInputModel> GetDataBasesList()
+        public List<DBQueryModel> GetDataBasesList()
         {
             var dbs = _dbQueryRepository.GetDataBases();
             return dbs.Select(r => r.ToQueryDBModel()).ToList();
