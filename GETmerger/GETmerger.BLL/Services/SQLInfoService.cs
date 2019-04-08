@@ -29,7 +29,7 @@ namespace GETmerger.BLL.Services
             _scriptQueryRepository = scriptQueryRepository;
             _historyRepository = historyRepository;
         }
-        [LoggingFilter]
+        [MyErrorHandler]
         public List<DBQueryInputModel> GetDataBasesList()
         {
             var dbs = _dbQueryRepository.GetDataBases();
