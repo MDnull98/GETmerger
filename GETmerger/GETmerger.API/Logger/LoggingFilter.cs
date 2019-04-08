@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace GETmerger.API.Logger
 {
-    public class LoggingFilter : ActionFilterAttribute, IExceptionFilter
+    public class LoggingFilter : ActionFilterAttribute
     {
         #region Logging
 
@@ -18,31 +18,19 @@ namespace GETmerger.API.Logger
                     filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
                     filterContext.ActionDescriptor.ActionName));
 
-                var k = filterContext.ActionParameters.Values.ToString();
-                message.Append(string.Format($"Method get parameters :{0}",k));
-
                 log.Info(message);
+
+                var k = filterContext.ActionParameters.Values.ToString();
+
+                log.Info(k);
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
                 var message = new StringBuilder();
                 var k = filterContext.ActionDescriptor.GetParameters().ToString();
-                message.Append(string.Format($"Output : {0}", k));
+                message.Append(string.Format($@"Output : {k}"));
                 log.Info(message);
-        }
-
-        public void OnException(ExceptionContext filterContext, HandleErrorAttribute hea)
-        {
-           
-        }
-
-        public void OnException(ExceptionContext filterContext)
-        {
-            if (filterContext.Exception != null)
-            {
-                log.Error("Error in Controller", filterContext.Exception);
-            }
         }
     }
 }

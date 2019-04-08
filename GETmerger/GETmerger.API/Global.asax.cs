@@ -18,7 +18,7 @@ namespace GETmerger.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
-        private static readonly ILog log = LogManager.GetLogger("ApiLog");
+        private static readonly ILog log = LogManager.GetLogger("LOGGER");
 
         protected void Application_Start()
         {
@@ -42,10 +42,8 @@ namespace GETmerger.API
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            Exception ex = Server.GetLastError();
-            log.Debug("++++++++++++++++++++++++++++");
-            log.Error(@"Exception - \n" + ex);
-            log.Debug("++++++++++++++++++++++++++++");
+            log.Debug("Application Start");
+            log.Debug("=======================");
         }
     }
 }

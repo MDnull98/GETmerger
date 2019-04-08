@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http.Filters;
 using GETmerger.API.Logger;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
@@ -28,14 +29,12 @@ namespace GETmerger.BLL.Services
             _scriptQueryRepository = scriptQueryRepository;
             _historyRepository = historyRepository;
         }
-        [LoggingFilter]
         public List<DBQueryInputModel> GetDataBasesList()
         {
-            throw new Exception();
             var dbs = _dbQueryRepository.GetDataBases();
             return dbs.Select(r => r.ToQueryDBModel()).ToList();
         }
-
+        [LoggingFilter]
         public List<TableQueryInputModel> GetTables(int databaseId)
         {
                 var tables = _tableQueryRepository.GetTables(databaseId);

@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logger\ErrorFilter.cs" />
     <Compile Include="Logger\LoggingFilter.cs" />
     <Compile Include="Mappers\SQLInfoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

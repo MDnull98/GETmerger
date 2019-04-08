@@ -9,6 +9,7 @@ namespace GETmerger.API
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new LoggingFilter());
+            filters.Add(new ErrorFilter());
         }
     }
 }
