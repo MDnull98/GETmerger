@@ -38,14 +38,14 @@ namespace GETmerger.BLL.Mappers
             };
         }
 
-        public static HistoryInputModel ToHistoryModel(this HistoryEntity input)
+        public static HistoryOutputModel ToHistoryModel(this HistoryEntity input)
         {
             if (input == null)
             {
                 return null;
             }
 
-            return new HistoryInputModel()
+            return new HistoryOutputModel()
             {
                 DatabaseId = input.DatabaseId,
                 TableId = input.TableId,

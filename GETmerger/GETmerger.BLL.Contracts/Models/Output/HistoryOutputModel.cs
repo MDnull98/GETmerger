@@ -2,7 +2,7 @@
 
 namespace GETmerger.BLL.Contracts.Models.Input
 {
-    public class HistoryInputModel
+    public class HistoryOutputModel
     {
         public int Id { get; set; }
         public int DatabaseId { get; set; }

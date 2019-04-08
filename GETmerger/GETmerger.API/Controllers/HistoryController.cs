@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
-using GETmerger.API.Mapper;
-using GETmerger.API.ViewModels;
+using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.Core.Models;
 
@@ -20,15 +18,16 @@ namespace GETmerger.API.Controllers
             _historyService = historyService;
         }
         [Route("api/history")]
-        public GenericResponse<IEnumerable<HistoryVM>> GetHistory()
+        public GenericResponse<IEnumerable<HistoryOutputModel>> GetHistory()
         {
             var history = _historyService.GetHistory();
-            return new GenericResponse<IEnumerable<HistoryVM>>(history.Select(x=>x.ToVMHistory()));
+            return new GenericResponse<IEnumerable<HistoryOutputModel>>(history);
         }
         [Route("api/history/{id}")]
-        public void Delete(int id)
+        public GenericResponse Delete(int id)
         {
              _historyService.Delete(id);
+             return new GenericResponse();
         }
     }
 }

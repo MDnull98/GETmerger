@@ -30,7 +30,7 @@ namespace GETmerger.DAL.Repositories
 
         public HistoryEntity Get(int? id)
         {
-            return databaseContext.History.Where(b => b.Id == id).FirstOrDefault();
+            return databaseContext.History.FirstOrDefault(b => b.Id == id);
         }
 
         public List<HistoryEntity> GetAll()

@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc.Html;
+using System.Net;
+using System.Web.Http;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
+using GETmerger.BLL.Mappers;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
@@ -14,39 +15,26 @@ namespace GETmerger.BLL.Services
     {
         private IHistoryRepository _historyRepository { get; }
         private IScriptRepository _scriptRepository { get; }
+        private IHistoryInfoRepository _historyInfoRepository {get;}
 
-        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository)
+        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository, IHistoryInfoRepository historyInfoRepository)
         {
             _historyRepository = historyRepository;
             _scriptRepository = scriptRepository;
+            _historyInfoRepository = historyInfoRepository;
         }
 
-        public IEnumerable<HistoryInputModel> GetHistory()
+        //historyVM
+        public IEnumerable<HistoryOutputModel> GetHistory()
         {
-            var DBList = new List<HistoryInputModel>();
-            var list = _historyRepository.GetAll().ToList();
-
-            foreach (HistoryEntity item in list)
-            {
-                var dbDTO = new HistoryInputModel
-                {
-                    Id =item.Id,
-                    DatabaseId =item.DatabaseId,
-                    TableId = item.TableId,
-                    GenerateScript = item.GenerateScript,
-                    AddDate = item.AddDate
-                };
-
-                DBList.Add(dbDTO);
-            }
-
-            return DBList;
+            var dbs = _historyInfoRepository.GetHistory();
+            return dbs.Select(r => r.ToHistoryModel()).ToList();
         }
 
-        public HistoryInputModel Get(int id)
+        public HistoryOutputModel Get(int id)
         {
             var historyEntity = _historyRepository.Get(id);
-                return new HistoryInputModel
+                return new HistoryOutputModel
                 {
                     Id = historyEntity.Id,
                     DatabaseId = historyEntity.DatabaseId,
@@ -59,9 +47,11 @@ namespace GETmerger.BLL.Services
         public void Delete(int id)
         {
             var historyEntity = _historyRepository.Get(id);
-
-            if (historyEntity != null)
-                _historyRepository.Delete(id);
+            if (historyEntity == null)
+            {
+               throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            _historyRepository.Delete(id);
         }
     }
 }
