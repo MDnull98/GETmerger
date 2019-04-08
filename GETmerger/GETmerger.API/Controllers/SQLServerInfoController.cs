@@ -41,7 +41,7 @@ namespace GETmerger.API.Controllers
         [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
         public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
         {
-            string script = _sqlinfoService.GetMergeScript(databaseID, tableID);
+            var script = _sqlinfoService.GetMergeScript(databaseID, tableID);
             return new GenericResponse<string>(script);
         }
     }

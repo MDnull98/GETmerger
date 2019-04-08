@@ -14,12 +14,12 @@ namespace GETmerger.API.Logger
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
                 var message = new StringBuilder();
-                message.Append(string.Format($"Executing controller {0}, action {1}.",
+                message.Append(string.Format("Executing controller {0}, action {1}.",
                     filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
                     filterContext.ActionDescriptor.ActionName));
 
                 var k = filterContext.ActionParameters.Values.ToString();
-                message.Append(string.Format($"Method get parameters :{0}",k));
+                message.Append(string.Format("Method get parameters :{0}",k));
 
                 log.Info(message);
         }
@@ -30,11 +30,6 @@ namespace GETmerger.API.Logger
                 var k = filterContext.ActionDescriptor.GetParameters().ToString();
                 message.Append(string.Format($"Output : {0}", k));
                 log.Info(message);
-        }
-
-        public void OnException(ExceptionContext filterContext, HandleErrorAttribute hea)
-        {
-           
         }
 
         public void OnException(ExceptionContext filterContext)

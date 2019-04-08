@@ -6,11 +6,10 @@ using Microsoft.VisualBasic.Logging;
 
 namespace GETmerger.API.Logger
 {
-    public class LoggingFilter : ActionFilterAttribute, IExceptionFilter
+    public class LoggingFilter : ActionFilterAttribute, IExceptionFilter 
     {
         #region Logging
 
-        // public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static ILog log = LogManager.GetLogger("LOGGER");
 
         #endregion
