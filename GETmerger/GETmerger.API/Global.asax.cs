@@ -10,7 +10,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using GETmerger.API.App_Start;
 using GETmerger.DI;
 using GETmerger.DI.Modules;
 using log4net;
@@ -31,7 +30,6 @@ namespace GETmerger.API
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
 
             //DI
-            //AutofacAPIconfig.ConfigureContainer();
             var currentAssembly = Assembly.GetExecutingAssembly();
             var config = GlobalConfiguration.Configuration;
 
@@ -46,7 +44,7 @@ namespace GETmerger.API
         {
             Exception ex = Server.GetLastError();
             log.Debug("++++++++++++++++++++++++++++");
-            log.Error("Exception - \n" + ex);
+            log.Error(@"Exception - \n" + ex);
             log.Debug("++++++++++++++++++++++++++++");
         }
     }

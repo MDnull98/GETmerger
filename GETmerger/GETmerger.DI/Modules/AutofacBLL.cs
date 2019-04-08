@@ -15,8 +15,8 @@ namespace GETmerger.DI.Modules
         protected override void Load(ContainerBuilder moduleBuilder)
         {
             moduleBuilder.RegisterType<SQLInfoService>()
-                .As(typeof(ISQLInfoService))
-                .WithParameter("dbconnection", _connectionString);
+                .As(typeof(ISQLInfoService));
+            //.WithParameter("dbconnection", _connectionString);
             // moduleBuilder.RegisterType<SQLInfoService>().As<ISQLInfoService>();
         }
     }

@@ -11,6 +11,5 @@ namespace GETmerger.Core.Contracts.QueryRepositories
     {
         T Get<T>(string query, ISqlDbParameter parameter);
         List<T> GetList<T>(string query, ISqlDbParameter parameter);
-      //  string MergeScript(string query, ISqlDbParameter parameter);
     }
 }
