@@ -1,6 +1,6 @@
-﻿namespace GETmerger.BLL.Contracts.Models.Output
+﻿namespace GETmerger.BLL.Contracts.Models.Input
 {
-    public class DatabaseOutputModel
+    public class DBQueryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

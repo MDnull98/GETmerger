@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web.Http;
 using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
+using GETmerger.BLL.Mappers;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.QueryRepositories;
 using GETmerger.DAL.Contracts.Repositories;
@@ -13,46 +15,42 @@ namespace GETmerger.BLL.Services
     {
         private IHistoryRepository _historyRepository { get; }
         private IScriptRepository _scriptRepository { get; }
+        private IHistoryQueryRepository _historyQueryRepository {get;}
 
-        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository)
+        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository, IHistoryQueryRepository historyQueryRepository)
         {
             _historyRepository = historyRepository;
             _scriptRepository = scriptRepository;
+            _historyQueryRepository = historyQueryRepository;
         }
 
-        public IEnumerable<HistoryInputModel> GetHistory()
+        public HistoryOutputModel Get(int id)
         {
-            List<HistoryInputModel> DBList = new List<HistoryInputModel>();
-            List<HistoryEntity> list = _historyRepository.GetAll().ToList();
-
-            foreach (HistoryEntity item in list)
-            {
-                HistoryInputModel dbDTO = new HistoryInputModel
+            var historyEntity = _historyRepository.Get(id);
+                return new HistoryOutputModel
                 {
-                    Id =item.Id,
-                    DatabaseId =item.DatabaseId,
-                    TableId = item.TableId,
-                    GenerateScript = item.GenerateScript,
-                    AddDate = item.AddDate
+                    Id = historyEntity.Id,
+                    DatabaseId = historyEntity.DatabaseId,
+                    TableId = historyEntity.TableId,
+                    GenerateScript = historyEntity.GenerateScript,
+                    AddDate = historyEntity.AddDate
                 };
-
-                DBList.Add(dbDTO);
-            }
-
-            return DBList;
         }
 
         public void Delete(int id)
         {
-            HistoryEntity historyEntity = _historyRepository.Get(id);
-
-            if (historyEntity != null)
-                _historyRepository.Delete(id);
+            var historyEntity = _historyRepository.Get(id);
+            if (historyEntity == null)
+            {
+               throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+           _historyRepository.Delete(id);
         }
 
-        public HistoryInputModel Get(int? id)
+        public IEnumerable<HistoryOutputModel> GetHistory()
         {
-            throw new NotImplementedException();
+            var dbs = _historyQueryRepository.GetHistory();
+            return dbs.Select(r => r.ToHistoryModel()).ToList();
         }
     }
 }

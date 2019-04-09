@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace GETmerger.DAL.Contracts.Models.DomainModels
+namespace GETmerger.BLL.Contracts.Models.Input
 {
-    public class HistoryEntity
+    public class HistoryOutputModel
     {
         public int Id { get; set; }
         public int DatabaseId { get; set; }

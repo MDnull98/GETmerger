@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GETmerger.BLL.Contracts.Models.Input
+namespace GETmerger.DAL.Contracts.Models.DTOs
 {
-    public class HistoryInputModel
+    public class HistoryDTO
     {
         public int Id { get; set; }
         public int DatabaseId { get; set; }
-      //  public string DataBaseName { get; set; }
         public int TableId { get; set; }
-      //  public string TableName { get; set; }
         public string GenerateScript { get; set; }
         public DateTime AddDate { get; set; }
     }

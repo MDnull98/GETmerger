@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using GETmerger.API.Logger;
-using GETmerger.API.Mapper;
-using GETmerger.API.ViewModels;
+using GETmerger.BLL.Contracts.Models.Input;
 using GETmerger.BLL.Contracts.Services;
 using GETmerger.Core.Models;
 using log4net;
@@ -25,23 +21,23 @@ namespace GETmerger.API.Controllers
         }
 
         [Route("api/databases")]
-        public GenericResponse<IEnumerable<SQLInfoDatabaseVM>> GetDatabases()
+        public GenericResponse<IEnumerable<DBQueryModel>> GetDatabases()
         {
             var dbVM = _sqlinfoService.GetDataBasesList();
-            return new GenericResponse<IEnumerable<SQLInfoDatabaseVM>>(dbVM.Select(x => x.ToVMdatabases()));
+            return new GenericResponse<IEnumerable<DBQueryModel>>(dbVM);
         }
 
         [Route("api/databases/{databaseID}/tables")]
-        public GenericResponse<IEnumerable<SQLInfoTablesVM>> GetTables(int databaseID)
+        public GenericResponse<IEnumerable<TableQueryInputModel>> GetTables(int databaseID)
         {
             var tablesVM = _sqlinfoService.GetTables(databaseID);
-            return new GenericResponse<IEnumerable<SQLInfoTablesVM>>(tablesVM.Select(t => t.ToVMtables()));
+            return new GenericResponse<IEnumerable<TableQueryInputModel>>(tablesVM);
         }
 
         [Route("api/databases/{databaseID}/tables/{tableID}/merge-script")]
         public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
         {
-            string script = _sqlinfoService.GetMergeScript(databaseID, tableID);
+            var script = _sqlinfoService.GetMergeScript(databaseID, tableID);
             return new GenericResponse<string>(script);
         }
     }
