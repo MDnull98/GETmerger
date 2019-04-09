@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace GETmerger.API
 {
@@ -9,7 +10,8 @@ namespace GETmerger.API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Конфигурация и службы веб-API
+            //Enable CORS
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers:"*",methods:"*"));
 
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
