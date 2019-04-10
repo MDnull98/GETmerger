@@ -1,18 +1,19 @@
 ﻿using System.IO;
-using log4net;
+using System.Collections;
 using System.Web;
+using log4net;
 
 namespace GETmerger.API.App_Start
 {
-    public class LogsConfig: System.Web.HttpApplication
+    public class LogsConfig: HttpApplication
     {
         private static readonly ILog log = LogManager.GetLogger("LOGGER");
 
-        public static void Configure()
+        public static void Configure(HttpApplication app)
         {
-            var param = Server.MapPath("~/Web.config");
+            var param = app.Server.MapPath("~/Web.config");
             var file = new FileInfo(param);
-            log4net.Config.XmlConfigurator.Configure(file);
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace GETmerger.DI
             var builder = new ContainerBuilder();
 
             builder.RegisterModule(new AutofacDAL(connectionString));
-            builder.RegisterModule(new AutofacBLL(connectionString));
+            builder.RegisterModule(new AutofacBLL());
             builder.RegisterModule(new AutofacWebApi(config, assembly));
 
             var container = builder.Build();

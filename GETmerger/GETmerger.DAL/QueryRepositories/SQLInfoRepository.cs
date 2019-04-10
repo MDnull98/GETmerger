@@ -35,6 +35,7 @@ namespace GETmerger.DAL.QueryRepositories
                          SELECT [object_id] as id, name  FROM sys.Tables WHERE name NOT IN(''sysdiagrams'')' 
                          exec  sp_executesql @Query;";
 
+            connection.Open();
             var command = new SqlCommand(sql, connection);
             var DBid = new SqlParameter("@databaseid", databaseId);
 
@@ -67,7 +68,7 @@ namespace GETmerger.DAL.QueryRepositories
             command.Parameters.Add(DBid);
             command.Parameters.Add(Tableid);
             command.ExecuteNonQuery();
-
+            connection.Close();
             return Get<string>(sql);
         }
     }

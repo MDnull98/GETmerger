@@ -10,9 +10,6 @@ namespace GETmerger.API
     {
         public static void Register(HttpConfiguration config)
         {
-            //Enable CORS
-            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers:"*",methods:"*"));
-
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 
