@@ -24,6 +24,7 @@ namespace GETmerger.API.Controllers
         public GenericResponse<IEnumerable<DBQueryModel>> GetDatabases()
         {
             var dbVM = _sqlinfoService.GetDataBasesList();
+
             return new GenericResponse<IEnumerable<DBQueryModel>>(dbVM);
         }
 
@@ -31,6 +32,7 @@ namespace GETmerger.API.Controllers
         public GenericResponse<IEnumerable<TableQueryInputModel>> GetTables(int databaseID)
         {
             var tablesVM = _sqlinfoService.GetTables(databaseID);
+
             return new GenericResponse<IEnumerable<TableQueryInputModel>>(tablesVM);
         }
 
@@ -38,6 +40,7 @@ namespace GETmerger.API.Controllers
         public GenericResponse<string> GetMergeScript(int databaseID, int tableID)
         {
             var script = _sqlinfoService.GetMergeScript(databaseID, tableID);
+
             return new GenericResponse<string>(script);
         }
     }

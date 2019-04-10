@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using GETmerger.Core.QueryRepositories;
-using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.Models.DTOs;
 using GETmerger.DAL.Contracts.QueryRepositories;
 

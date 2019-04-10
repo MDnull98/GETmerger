@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using GETmerger.DAL.Contracts.Models.DomainModels;
 using GETmerger.DAL.Contracts.Repositories;
@@ -9,33 +8,34 @@ namespace GETmerger.DAL.Repositories
 {
     public class HistoryRepository : IHistoryRepository
     {
-        private MergerContext databaseContext;
+        private readonly MergerContext _databaseContext;
 
         public HistoryRepository(MergerContext context)
         {
-            databaseContext = context;
+            _databaseContext = context;
         }
+
         public void Create(HistoryEntity item)
         {
-            databaseContext.History.Add(item);
-            databaseContext.SaveChanges();
+            _databaseContext.History.Add(item);
+            _databaseContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            HistoryEntity historyEntity = databaseContext.History.Find(id);
+            HistoryEntity historyEntity = _databaseContext.History.Find(id);
             if (historyEntity != null)
-                databaseContext.History.Remove(historyEntity);
+                _databaseContext.History.Remove(historyEntity);
         }
 
         public HistoryEntity Get(int? id)
         {
-            return databaseContext.History.FirstOrDefault(b => b.Id == id);
+            return _databaseContext.History.FirstOrDefault(b => b.Id == id);
         }
 
         public List<HistoryEntity> GetAll()
         {
-            return databaseContext.History.ToList();
+            return _databaseContext.History.ToList();
         }
     }
 }

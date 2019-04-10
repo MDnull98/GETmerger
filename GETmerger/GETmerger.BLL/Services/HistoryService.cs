@@ -27,6 +27,7 @@ namespace GETmerger.BLL.Services
         public HistoryOutputModel Get(int id)
         {
             var historyEntity = _historyRepository.Get(id);
+
                 return new HistoryOutputModel
                 {
                     Id = historyEntity.Id,
@@ -40,16 +41,19 @@ namespace GETmerger.BLL.Services
         public void Delete(int id)
         {
             var historyEntity = _historyRepository.Get(id);
+
             if (historyEntity == null)
             {
                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
+
            _historyRepository.Delete(id);
         }
 
         public IEnumerable<HistoryOutputModel> GetHistory()
         {
             var dbs = _historyQueryRepository.GetHistory();
+
             return dbs.Select(r => r.ToHistoryModel()).ToList();
         }
     }

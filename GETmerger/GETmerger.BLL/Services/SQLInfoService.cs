@@ -29,12 +29,15 @@ namespace GETmerger.BLL.Services
             _scriptQueryRepository = scriptQueryRepository;
             _historyRepository = historyRepository;
         }
+
         [MyErrorHandler]
         public List<DBQueryModel> GetDataBasesList()
         {
             var dbs = _dbQueryRepository.GetDataBases();
+
             return dbs.Select(r => r.ToQueryDBModel()).ToList();
         }
+
         [LoggingFilter]
         public List<TableQueryInputModel> GetTables(int databaseId)
         {
@@ -47,16 +50,18 @@ namespace GETmerger.BLL.Services
         {
             var xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID);
             var stringSql = XMLParser.GetSQL(xml);
-
             var dt = DateTime.Now;
 
-            _historyRepository.Create(new HistoryEntity
+            var historyEntity = new HistoryEntity
             {
                 DatabaseId = databaseID,
                 TableId = tableID,
-                GenerateScript = XMLParser.GetSQL(xml),
+                GenerateScript = stringSql,
                 AddDate = dt
-            });
+            };
+
+            _historyRepository.Create(historyEntity);
+
             return stringSql;
         }
     }

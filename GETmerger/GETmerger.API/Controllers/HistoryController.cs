@@ -17,16 +17,20 @@ namespace GETmerger.API.Controllers
         {
             _historyService = historyService;
         }
+
         [Route("api/history")]
         public GenericResponse<IEnumerable<HistoryOutputModel>> GetHistory()
         {
             var history = _historyService.GetHistory();
+
             return new GenericResponse<IEnumerable<HistoryOutputModel>>(history);
         }
+
         [Route("api/history/{id}")]
         public GenericResponse Delete(int id)
         {
              _historyService.Delete(id);
+
              return new GenericResponse();
         }
     }
