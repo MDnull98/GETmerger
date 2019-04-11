@@ -1,0 +1,89 @@
+2019-04-08 10:24:43,163 ERROR 6 LOGGER - 
+System.Exception: Выдано исключение типа "System.Exception".
+2019-04-08 10:37:57,569 ERROR 8 LOGGER - Controller GetDataBasesList привел к ошибке :
+System.Exception: Выдано исключение типа "System.Exception".
+2019-04-08 10:40:11,610 INFO 6 LOGGER - 
+2019-04-08 10:40:53,321 ERROR 6 LOGGER - Controller GetDataBasesList привел к ошибке :
+System.Exception: Выдано исключение типа "System.Exception".
+2019-04-08 11:21:05,580 INFO 7 LOGGER - {GETmerger.BLL.Contracts.Models.Input.DBQueryInputModel, GETmerger.BLL.Contracts.Models.Input.DBQueryInputModel, GETmerger.BLL.Contracts.Models.Input.DBQueryInputModel, GETmerger.BLL.Contracts.Models.Input.DBQueryInputModel, GETmerger.BLL.Contracts.Models.Input.DBQueryInputModel, GETmerger.BLL.Contracts.Models.Input.DBQueryInputModel}
+2019-04-08 11:59:44,375 ERROR 6 LOGGER - Exception - \nSystem.Web.HttpException (0x80004005): Контроллер для пути "/" не найден или не реализует интерфейс IController.
+   в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2019-04-08 12:00:10,466 ERROR 6 LOGGER - Exception - \nSystem.Web.HttpException (0x80004005): Контроллер для пути "/" не найден или не реализует интерфейс IController.
+   в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2019-04-08 12:01:49,927 ERROR 6 LOGGER - Last Exception - \nSystem.Web.HttpException (0x80004005): Контроллер для пути "/" не найден или не реализует интерфейс IController.
+   в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2019-04-08 12:32:03,457 ERROR 6 LOGGER - Application started
+2019-04-08 12:33:01,046 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:33:01,055 INFO 5 LOGGER - Application started
+2019-04-08 12:33:01,055 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:36:21,785 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:36:21,795 INFO 5 LOGGER - Application started
+2019-04-08 12:36:21,796 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:36:21,871 ERROR 6 LOGGER - Error : 
+System.Exception: Выдано исключение типа "System.Exception".
+2019-04-08 12:43:22,837 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:43:22,847 INFO 5 LOGGER - Application started
+2019-04-08 12:43:22,848 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:44:31,526 INFO 7 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 12:44:31,535 INFO 7 LOGGER - Application started
+2019-04-08 12:44:31,535 INFO 7 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:13:39,860 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:13:39,871 INFO 6 LOGGER - Application started
+2019-04-08 13:13:39,951 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:18:11,093 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:18:11,106 INFO 6 LOGGER - Application started
+2019-04-08 13:18:11,106 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:19:01,125 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:19:01,137 INFO 5 LOGGER - Application started
+2019-04-08 13:19:01,137 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:37:16,093 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 13:37:16,131 INFO 6 LOGGER - Application started
+2019-04-08 13:37:16,131 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 15:11:57,928 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 15:11:57,938 INFO 6 LOGGER - Application started
+2019-04-08 15:11:57,938 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 15:50:56,107 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 15:50:56,116 INFO 5 LOGGER - Application started
+2019-04-08 15:50:56,116 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 15:56:07,515 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 15:56:07,526 INFO 6 LOGGER - Application started
+2019-04-08 15:56:07,526 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:08:57,597 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:08:57,609 INFO 6 LOGGER - Application started
+2019-04-08 16:08:57,609 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:12:17,671 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:12:17,687 INFO 6 LOGGER - Application started
+2019-04-08 16:12:17,687 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:12:49,935 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:12:49,948 INFO 6 LOGGER - Application started
+2019-04-08 16:12:49,948 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:43:01,553 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:43:01,561 INFO 5 LOGGER - Application started
+2019-04-08 16:43:01,561 INFO 5 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:49:08,803 INFO 6 LOGGER - ++++++++++++++++++++++++++++
+2019-04-08 16:49:08,817 INFO 6 LOGGER - Application started
+2019-04-08 16:49:08,818 INFO 6 LOGGER - ++++++++++++++++++++++++++++

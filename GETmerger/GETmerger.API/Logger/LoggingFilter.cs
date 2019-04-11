@@ -5,11 +5,7 @@ namespace GETmerger.API.Logger
 {
     public class LoggingFilter : ActionFilterAttribute, IExceptionFilter
     {
-        #region Logging
-
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        #endregion
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

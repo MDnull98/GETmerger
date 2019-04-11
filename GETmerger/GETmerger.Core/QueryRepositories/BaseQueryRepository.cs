@@ -36,7 +36,7 @@ namespace GETmerger.Core.QueryRepositories
         {
             var connection = GetConnection();
 
-            var res = connection.Query<T>(query, parameter).SingleOrDefault();
+            var res = connection.Query<T>(query, parameter).FirstOrDefault();
             return res;
         }
 

@@ -19,16 +19,16 @@ namespace GETmerger.DI.Modules
 
         protected override void Load(ContainerBuilder moduleBuilder)
         {
-            moduleBuilder.RegisterType<SQLInfoRepository>()
+            moduleBuilder.RegisterType<SqlInfoQueryRepository>()
                 .As(typeof(IDBQueryRepository))
                 .WithParameter("dbconnection", _connectionString);
 
-            moduleBuilder.RegisterType<SQLInfoRepository>()
+            moduleBuilder.RegisterType<SqlInfoQueryRepository>()
                 .As(typeof(ITableQueryRepository))
                 .WithParameter("dbconnection", _connectionString);
 
-            moduleBuilder.RegisterType<SQLInfoRepository>()
-                .As(typeof(IScriptRepository))
+            moduleBuilder.RegisterType<SqlInfoQueryRepository>()
+                .As(typeof(IScriptQueryRepository))
                 .WithParameter("dbconnection", _connectionString);
 
             moduleBuilder.RegisterType<HistoryRepository>()
