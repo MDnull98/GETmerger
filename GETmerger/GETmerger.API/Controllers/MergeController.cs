@@ -6,8 +6,6 @@ namespace GETmerger.API.Controllers
 {
     public class MergeController : ApiController
     {
-        // 1 GetMergeScript(int databaseID, int tableID)
-
         private readonly IMergeService _mergeService;
 
         public MergeController(IMergeService mergeService)

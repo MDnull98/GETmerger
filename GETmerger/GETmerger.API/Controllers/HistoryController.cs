@@ -8,9 +8,6 @@ namespace GETmerger.API.Controllers
 {
     public class HistoryController : ApiController
     {
-        //1 GetHistory()
-        //2 DeleteHistoryNote(int id)
-
         private readonly IHistoryService _historyService;
 
         public HistoryController(IHistoryService historyService)

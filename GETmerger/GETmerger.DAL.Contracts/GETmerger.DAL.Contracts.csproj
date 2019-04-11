@@ -47,7 +47,7 @@
     <Compile Include="Models\DTOs\HistoryDTO.cs" />
     <Compile Include="QueryRepositories\IDBQueryRepository.cs" />
     <Compile Include="QueryRepositories\IHistoryQueryRepository.cs" />
-    <Compile Include="QueryRepositories\IScriptRepository.cs" />
+    <Compile Include="QueryRepositories\IScriptQueryRepository.cs" />
     <Compile Include="QueryRepositories\ITableQueryRepository.cs" />
     <Compile Include="Models\DTOs\TableDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,9 +9,6 @@ namespace GETmerger.API.Controllers
 {
     public class SQLServerInfoController : ApiController
     {
-        // 1 GetDatabases()
-        // 2 GetTables(int databaseID)
-
         private readonly ISQLInfoService _sqlinfoService;
 
         public SQLServerInfoController(ISQLInfoService sqlinfoService)

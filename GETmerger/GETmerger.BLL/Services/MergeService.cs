@@ -12,18 +12,17 @@ namespace GETmerger.BLL.Services
 {
     public class MergeService : IMergeService
     {
-        private readonly IScriptRepository _scriptQueryRepository;
-        private readonly IHistoryRepository _historyRepository;
+        private readonly IScriptQueryRepository _scriptQueryQueryRepository;
+        private readonly IHistoryRepository _historyQueryRepository;
 
-        public MergeService(IScriptRepository scriptQueryRepository, IHistoryRepository historyRepository)
+        public MergeService(IScriptQueryRepository scriptQueryQueryRepository, IHistoryRepository historyQueryRepository)
         {
-            _scriptQueryRepository = scriptQueryRepository;
-            _historyRepository = historyRepository;
+            _scriptQueryQueryRepository = scriptQueryQueryRepository;
+            _historyQueryRepository = historyQueryRepository;
         }
         public string GetMergeScript(int databaseID, int tableID)
         {
-
-            var xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID);
+            var xml = _scriptQueryQueryRepository.GetMergeScript(databaseID, tableID);
             var stringSql = XMLParser.GetSQL(xml);
             var dt = DateTime.Now;
 
@@ -35,7 +34,7 @@ namespace GETmerger.BLL.Services
                 AddDate = dt
             };
 
-            _historyRepository.Create(historyEntity);
+            _historyQueryRepository.Create(historyEntity);
 
             return stringSql;
         }

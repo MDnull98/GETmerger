@@ -14,13 +14,13 @@ namespace GETmerger.BLL.Services
     public class HistoryService : IHistoryService
     {
         private IHistoryRepository _historyRepository { get; }
-        private IScriptRepository _scriptRepository { get; }
+        private IScriptQueryRepository ScriptQueryRepository { get; }
         private IHistoryQueryRepository _historyQueryRepository {get;}
 
-        public HistoryService(IHistoryRepository historyRepository, IScriptRepository scriptRepository, IHistoryQueryRepository historyQueryRepository)
+        public HistoryService(IHistoryRepository historyRepository, IScriptQueryRepository scriptQueryRepository, IHistoryQueryRepository historyQueryRepository)
         {
             _historyRepository = historyRepository;
-            _scriptRepository = scriptRepository;
+            ScriptQueryRepository = scriptQueryRepository;
             _historyQueryRepository = historyQueryRepository;
         }
 
