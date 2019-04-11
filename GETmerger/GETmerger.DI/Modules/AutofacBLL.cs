@@ -12,6 +12,8 @@ namespace GETmerger.DI.Modules
                 .As(typeof(ISQLInfoService));
             moduleBuilder.RegisterType<HistoryService>()
                 .As(typeof(IHistoryService));
+            moduleBuilder.RegisterType<MergeService>()
+                .As(typeof(IMergeService));
         }
     }
 }

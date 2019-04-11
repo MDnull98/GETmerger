@@ -12,12 +12,12 @@ namespace GETmerger.API.Logger
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var message = new StringBuilder();
-            message.Append(string.Format($@"Executing method {MethodBase.GetCurrentMethod().Name} include {filterContext.ActionDescriptor.GetParameters()}"));
+            message.Append($@"Executing method {MethodBase.GetCurrentMethod().Name} include {filterContext.ActionDescriptor.GetParameters()}");
 
             log.Info(message);
 
             var k = filterContext.ActionParameters.Values.ToString();
-            message.Append(string.Format($@"Method get parameters :{k}"));
+            message.Append($@"Method get parameters :{k}");
 
             log.Info(message);
         }

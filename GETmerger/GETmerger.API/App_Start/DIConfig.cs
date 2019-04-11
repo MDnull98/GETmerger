@@ -5,7 +5,7 @@ using GETmerger.DI;
 
 namespace GETmerger.API
 {
-    public static class AutofacConfig
+    public static class DIConfig
     {
         public static void Configure()
         {

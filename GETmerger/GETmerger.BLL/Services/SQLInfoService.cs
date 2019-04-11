@@ -17,17 +17,13 @@ namespace GETmerger.BLL.Services
     {
         private readonly IDBQueryRepository _dbQueryRepository;
         private readonly ITableQueryRepository _tableQueryRepository;
-        private readonly IScriptRepository _scriptQueryRepository;
-        private readonly IHistoryRepository _historyRepository;
 
-        private static ILog log = LogManager.GetLogger("LOGGER");
+      //private static ILog log = LogManager.GetLogger("LOGGER");
 
-        public SQLInfoService(ITableQueryRepository tableQueryRepository, IDBQueryRepository dbQueryRepository, IScriptRepository scriptQueryRepository, IHistoryRepository historyRepository)
+        public SQLInfoService(ITableQueryRepository tableQueryRepository, IDBQueryRepository dbQueryRepository)
         {
             _tableQueryRepository = tableQueryRepository;
             _dbQueryRepository = dbQueryRepository;
-            _scriptQueryRepository = scriptQueryRepository;
-            _historyRepository = historyRepository;
         }
 
         [MyErrorHandler]
@@ -44,25 +40,6 @@ namespace GETmerger.BLL.Services
                 var tables = _tableQueryRepository.GetTables(databaseId);
 
                 return tables.Select(x => x.ToQueryTableModel()).ToList();
-        }
-
-        public string GetMergeScript(int databaseID, int tableID)
-        {
-            var xml = _scriptQueryRepository.GetMergeScript(databaseID, tableID);
-            var stringSql = XMLParser.GetSQL(xml);
-            var dt = DateTime.Now;
-
-            var historyEntity = new HistoryEntity
-            {
-                DatabaseId = databaseID,
-                TableId = tableID,
-                GenerateScript = stringSql,
-                AddDate = dt
-            };
-
-            _historyRepository.Create(historyEntity);
-
-            return stringSql;
         }
     }
 }

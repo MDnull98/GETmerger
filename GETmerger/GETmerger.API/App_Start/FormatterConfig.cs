@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace GETmerger.API.App_Start
 {
-    public class ReturnConfig
+    public class FormatterConfig
     {
         public static void Configure()
         {

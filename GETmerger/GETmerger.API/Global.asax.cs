@@ -16,9 +16,9 @@ namespace GETmerger.API
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AutofacConfig.Configure();
-            LogsConfig.Configure(this);
-            ReturnConfig.Configure();
+            DIConfig.Configure();
+            LogConfig.Configure(this);
+            FormatterConfig.Configure();
         }
     }
 }

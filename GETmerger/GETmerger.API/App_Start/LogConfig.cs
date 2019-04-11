@@ -5,10 +5,8 @@ using log4net;
 
 namespace GETmerger.API.App_Start
 {
-    public class LogsConfig: HttpApplication
+    public class LogConfig: HttpApplication
     {
-        private static readonly ILog log = LogManager.GetLogger("LOGGER");
-
         public static void Configure(HttpApplication app)
         {
             var param = app.Server.MapPath("~/Web.config");

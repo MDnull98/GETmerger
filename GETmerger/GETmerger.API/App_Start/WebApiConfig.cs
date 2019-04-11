@@ -10,6 +10,9 @@ namespace GETmerger.API
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 
