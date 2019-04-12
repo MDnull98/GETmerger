@@ -18,16 +18,16 @@ namespace GETmerger.DAL.QueryRepositories
          const string query = @"DECLARE @DataBaseName nvarchar(100);
                          Select @DataBaseName = [name]
                          from sys.databases
-                         where database_id = 6;
+                         where database_id = @databaseID;
 						 DECLARE @Query nvarchar(max) = 'USE '+@DataBaseName+';
                          DECLARE @TableName nvarchar(100); Select @TableName = [name] 
-                         from sys.tables where [object_id] = 277576027; exec sp_generate_merge @TableName';
+                         from sys.tables where [object_id] = '+@tableID+'; exec sp_generate_merge @TableName';
                          exec  sp_executesql @Query;";
 
             var param = new SqlDbParameter()
             {
                 new SqlParameter("databaseID", databaseID),
-                new SqlParameter("tableID", tableID)
+                new SqlParameter("tableID", tableID.ToString())
             };
 
             return Get<string>(query, param);
