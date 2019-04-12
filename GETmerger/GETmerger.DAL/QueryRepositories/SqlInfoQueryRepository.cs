@@ -7,7 +7,7 @@ using GETmerger.DAL.Contracts.QueryRepositories;
 
 namespace GETmerger.DAL.QueryRepositories
 {
-    public class SqlInfoQueryRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository, IScriptQueryRepository
+    public class SqlInfoQueryRepository: BaseQueryRepository,ITableQueryRepository, IDBQueryRepository
     {
         public SqlInfoQueryRepository(string dbconnection)
             : base(dbconnection)
@@ -36,27 +36,6 @@ namespace GETmerger.DAL.QueryRepositories
             };
 
             return GetList<TableDTO>(sql, param);
-        }
-
-        public string GetMergeScript(int databaseID, int tableID)
-        {
-            var sql = @"DECLARE @DataBaseName nvarchar(100);
-                         Select @DataBaseName = [name]
-                         from sys.databases
-                         where database_id = 6;
-                         DECLARE @TableName nvarchar(100);
-                         Select @TableName = [name]
-                         from sys.tables where [object_id] = 341576255;
-                         DECLARE @Query nvarchar(max) = 'USE ' + @DataBaseName +'; '+ 'exec sp_generate_merge ''Teachers'';';
-                         exec  sp_executesql @Query;";
-
-            var param = new SqlDbParameter()
-            {
-                new SqlParameter("databaseID", databaseID),
-                new SqlParameter("tableID", tableID)
-            };
-
-            return Get<string>(sql,param);
         }
     }
 }

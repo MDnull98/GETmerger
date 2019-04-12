@@ -10,8 +10,8 @@ namespace GETmerger.BLL
     {
         public static string GetSQL(string xmlfile)
         {
-            string pars = xmlfile.Substring(4);
-            pars = xmlfile.Substring(0, xmlfile.Length - 2);
+            var pars = xmlfile.Substring(4);
+            pars = pars.Substring(0, pars.Length - 8);
             return pars;
         }
     }

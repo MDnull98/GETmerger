@@ -27,7 +27,7 @@ namespace GETmerger.DI.Modules
                 .As(typeof(ITableQueryRepository))
                 .WithParameter("dbconnection", _connectionString);
 
-            moduleBuilder.RegisterType<SqlInfoQueryRepository>()
+            moduleBuilder.RegisterType<ScriptQueryRepository>()
                 .As(typeof(IScriptQueryRepository))
                 .WithParameter("dbconnection", _connectionString);
 
