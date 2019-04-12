@@ -41,6 +41,7 @@ namespace GETmerger.BLL.Mappers
 
             return new HistoryOutputModel()
             {
+                Id = input.Id,
                 DatabaseId = input.DatabaseId,
                 TableId = input.TableId,
                 GenerateScript = input.GenerateScript,

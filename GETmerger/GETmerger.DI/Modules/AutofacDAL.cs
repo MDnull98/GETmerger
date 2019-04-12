@@ -35,7 +35,8 @@ namespace GETmerger.DI.Modules
                  .As(typeof(IHistoryRepository));
 
             moduleBuilder.RegisterType<HistoryQueryRepository>()
-                .As(typeof(IHistoryQueryRepository));
+                .As(typeof(IHistoryQueryRepository))
+                .WithParameter("dbconnection", _connectionString);
 
             moduleBuilder.RegisterType<MergerContext>().AsSelf();
         }
