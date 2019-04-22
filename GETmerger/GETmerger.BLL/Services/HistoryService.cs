@@ -50,7 +50,7 @@ namespace GETmerger.BLL.Services
            _historyRepository.Delete(id);
         }
 
-        public IEnumerable<HistoryOutputModel> GetHistory()
+        public List<HistoryOutputModel> GetHistory()
         {
             var dbs = _historyQueryRepository.GetHistory();
 

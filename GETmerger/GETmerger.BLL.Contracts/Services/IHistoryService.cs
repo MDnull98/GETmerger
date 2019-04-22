@@ -5,7 +5,7 @@ namespace GETmerger.BLL.Contracts.Services
 {
     public interface IHistoryService
     {
-        IEnumerable<HistoryOutputModel> GetHistory();
+        List<HistoryOutputModel> GetHistory();
 
         void Delete(int id);
     }
